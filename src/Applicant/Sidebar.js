@@ -21,11 +21,10 @@ class Sidebar extends Component {
                         </div>
                         <nav className="mt-2">
                             <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                                <li className="nav-item menu-open">
+                                <li className="nav-item menu">
                                     <a href="#" className="nav-link active">
-                                        <i className="nav-icon fas fa-tachometer-alt" />
-                                        <p>
-                                            Dashboard
+                                        <i className="nav-icon fas fa-file" />
+                                        <p>My Applications
                                             <i className="right fas fa-angle-left" />
                                         </p>
                                     </a>
@@ -33,19 +32,19 @@ class Sidebar extends Component {
                                         <li className="nav-item">
                                             <a href="./index.html" className="nav-link">
                                                 <i className="far fa-circle nav-icon" />
-                                                <p>Dashboard v1</p>
+                                                <p>Start Application</p>
                                             </a>
                                         </li>
                                         <li className="nav-item">
-                                            <a href="./index2.html" className="nav-link active">
+                                            <a href="./index2.html" className="nav-link">
                                                 <i className="far fa-circle nav-icon" />
-                                                <p>Dashboard v2</p>
+                                                <p>View My application</p>
                                             </a>
                                         </li>
                                         <li className="nav-item">
                                             <a href="./index3.html" className="nav-link">
                                                 <i className="far fa-circle nav-icon" />
-                                                <p>Dashboard v3</p>
+                                                <p>Track My Applications</p>
                                             </a>
                                         </li>
                                     </ul>
