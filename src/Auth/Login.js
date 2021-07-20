@@ -35,7 +35,8 @@ class Login extends Component {
         this.setState({ isLoading: false });
         if (response.status === 200) {
           localStorage.setItem("isLoggedIn", true);
-          localStorage.setItem("userData", JSON.stringify(response.data.data));
+          localStorage.setItem("token", JSON.stringify(response.data.token));
+          localStorage.setItem("user", JSON.stringify(response.data.user));
           this.setState({
             msg: response.data.message,
             redirect: true,
@@ -53,8 +54,8 @@ class Login extends Component {
             this.setState({ errMsgEmail: "", errMsgPwd: "" });
           }, 2000);
         } else if (
-          response.data.status === "failed" &&
-          response.data.success === false
+          response.status === "failed" &&
+          response.success === false
         ) {
           this.setState({
             errMsg: response.data.message,
@@ -70,11 +71,11 @@ class Login extends Component {
   };
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/applicant" />;
     }
     const login = localStorage.getItem("isLoggedIn");
     if (login) {
-      return <Redirect to="/dashboard" />;
+      return <Redirect to="/applicant" />;
     }
     const isLoading = this.state.isLoading;
     return (

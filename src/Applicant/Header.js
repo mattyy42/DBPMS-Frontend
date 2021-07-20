@@ -1,6 +1,19 @@
 import React, { Component } from 'react'
-
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 class Header extends Component {
+    handleLogout = (e) => {     
+        e.preventDefault();
+        axios.get('http://127.0.0.1:8000/api/logout')
+            .then((response) => {
+                console.log(response.data.success);
+                if (response.status == 200 && response.data.success == false) {
+                    localStorage.removeItem("isLoggedIn");
+                    this.props.history.push('/login');
+                }
+            });
+        
+    };
     render() {
         return (
             <div>
@@ -126,9 +139,9 @@ class Header extends Component {
                             </div>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" data-widget="fullscreen" href="#" role="button">
-                                <i className="fas fa-expand-arrows-alt" />
-                            </a>
+                            <button className="nav-link" type="submit" onClick={this.handleLogout} >
+                                <i className="fas fa-sign-out-alt" />
+                            </button>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
@@ -143,4 +156,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
