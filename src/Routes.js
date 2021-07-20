@@ -6,7 +6,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // import PrivateRoute from './PrivateRoute';
 // import { Guard } from './Guard';
 // import Header from './components/layouts/Header';
-import Dashboard from './Applicant/Dashboard'
+// import Dashboard from './Applicant/Dashboard'
+import Fullpage from './Applicant/Fullpage';
 import Login from './Auth/Login';
 import Registration from './Auth/Registration';
 function Routes() {
@@ -15,10 +16,10 @@ function Routes() {
             {/* <Header /> */}
             <Switch>
                 <Route exact path="/" render={props => (
-                    <Redirect to={{ pathname: '/dashboard' }} />
+                    <Redirect to={{ pathname: '/applicant' }} />
                 )} />
                 {/* <Route path="/home" component={Home} /> */}
-                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/applicant" component={Fullpage} />
                 <Route path="/login" component={Login} />
                 {/* <Route path="/user/register" component={Register} /> */}
                 <Route path="/register" component={Registration} />
