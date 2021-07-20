@@ -7,6 +7,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // import { Guard } from './Guard';
 // import Header from './components/layouts/Header';
 import Dashboard from './Applicant/Dashboard'
+import Registration from './Auth/Registration';
 function Routes() {
     return (
         <>
@@ -17,8 +18,9 @@ function Routes() {
                 )} />
                 {/* <Route path="/home" component={Home} /> */}
                 <Route path="/dashboard" component={Dashboard} />
+                <Route path="/register" component={Registration} />
                 {/* <Route path="/user/login" component={Login} />
-                <Route path="/user/register" component={Register} />
+                
                 {/*Redirect if not authenticated */}
                 {/* <Guard path="/user" token="user-token" routeRedirect="/user/login" component={PrivateRoute} />  */}
             </Switch>
