@@ -23,6 +23,7 @@ function Routes() {
                 {/* <Route path="/user/register" component={Register} /> */}
                 <Route path="/register" component={Registration} />
                 {/* <Route path="/user/login" component={Login} />
+                {/* <Route path="/user/login" component={Login} />
                 
                 {/*Redirect if not authenticated */}
                 {/* <Guard path="/user" token="user-token" routeRedirect="/user/login" component={PrivateRoute} />  */}
