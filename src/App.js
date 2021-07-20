@@ -1,14 +1,13 @@
-import './App.css';
-import Header from './Applicant/Header';
-import Sidebar from './Applicant/Sidebar';
-import Dashboard from './Applicant/Dashboard'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Routes from './Routes';
+
 function App() {
   return (
-    <div class="wrapper">
-      <Header />
-      <Sidebar />
-      <Dashboard />
-    </div>
+    <Router>
+      <div class="wrapper">
+        <Routes />
+      </div>
+    </Router>
   );
 }
 
