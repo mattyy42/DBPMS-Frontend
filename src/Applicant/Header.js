@@ -21,11 +21,9 @@ class Header extends Component {
                     {/* Left navbar links */}
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link" data-widget="pushmenu" href="#" role="button"><i className="fas fa-bars" /></a>
+                            <a className="nav-link" data-widget="pushmenu"  role="button"><i className="fas fa-bars" /></a>
                         </li>
-                        <li className="nav-item d-none d-sm-inline-block">
-                            <a href="index3.html" className="nav-link">Home</a>
-                        </li>
+                         
                         <li className="nav-item d-none d-sm-inline-block">
                             <a href="#" className="nav-link">Contact</a>
                         </li>
@@ -34,9 +32,7 @@ class Header extends Component {
                     <ul className="navbar-nav ml-auto">
                         {/* Navbar Search */}
                         <li className="nav-item">
-                            <a className="nav-link" data-widget="navbar-search" href="#" role="button">
-                                <i className="fas fa-search" />
-                            </a>
+                          
                             <div className="navbar-search-block">
                                 <form className="form-inline">
                                     <div className="input-group input-group-sm">
@@ -108,7 +104,7 @@ class Header extends Component {
                                     {/* Message End */}
                                 </a>
                                 <div className="dropdown-divider" />
-                                <a href="#" className="dropdown-item dropdown-footer">See All Messages</a>
+                                <a href="#" className="dropdown-item dropdown-footer">See All Comments</a>
                             </div>
                         </li>
                         {/* Notifications Dropdown Menu */}
@@ -139,9 +135,10 @@ class Header extends Component {
                             </div>
                         </li>
                         <li className="nav-item">
-                            <button className="nav-link" type="submit" onClick={this.handleLogout} >
+                        <a className="nav-link"   href="#" role="button" type="submit" onClick={this.handleLogout}>
                                 <i className="fas fa-sign-out-alt" />
-                            </button>
+                            </a>
+                            
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">

@@ -47,13 +47,13 @@ class Registration extends Component {
               this.setState({ msg: "" });
             }, 2000);
             this.setState({
-                msg: response.message,
+                msg: response.msg,
                 redirect: true,
               }); 
           }
   
           if (response.status === "failed") {
-            this.setState({ msg: response.message });
+            this.setState({ msg: response.msg });
             setTimeout(() => {
               this.setState({ msg: "" });
             }, 2000);
@@ -66,6 +66,7 @@ class Registration extends Component {
         if (this.state.redirect) {
             return <Redirect to="/login" />;
           }
+
         return (
             <div className="hold-transition register-page">
                 <div className="register-box">
