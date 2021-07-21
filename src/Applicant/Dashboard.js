@@ -1,7 +1,29 @@
 import React, { Component } from 'react'
-
+import axios from 'axios';
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      applications: [],
+    }
+  }
+  componentDidMount() {
+    const tokenString = localStorage.getItem('token');
+    axios
+      .get("http://localhost:8000/api/applicant/viewApplication",
+        { headers: { authorization: `Bearer ${tokenString}` } })
+      .then((response) => {
+        if (response.massage == "unauthenticated") {
+          console.log('hey');
+        }
+        this.setState({
+          applications: response.data.data,
+          // building_officer: response.data.buildingOfficer,
+        })
+      })
+  }
   render() {
+    const { applications } = this.state;
     return (
       <div>
         <div className="content-wrapper">
@@ -107,62 +129,14 @@ class Dashboard extends Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                          <td>Call of Duty IV</td>
-                          <td><span className="badge badge-success">Shipped</span></td>
-                          <td>
-                            <div className="sparkbar" data-color="#00a65a" data-height={20}>90,80,90,-70,61,-83,63</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                          <td>Samsung Smart TV</td>
-                          <td><span className="badge badge-warning">Pending</span></td>
-                          <td>
-                            <div className="sparkbar" data-color="#f39c12" data-height={20}>90,80,-90,70,61,-83,68</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>iPhone 6 Plus</td>
-                          <td><span className="badge badge-danger">Delivered</span></td>
-                          <td>
-                            <div className="sparkbar" data-color="#f56954" data-height={20}>90,-80,90,70,-61,83,63</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>Samsung Smart TV</td>
-                          <td><span className="badge badge-info">Processing</span></td>
-                          <td>
-                            <div className="sparkbar" data-color="#00c0ef" data-height={20}>90,80,-90,70,-61,83,63</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                          <td>Samsung Smart TV</td>
-                          <td><span className="badge badge-warning">Pending</span></td>
-                          <td>
-                            <div className="sparkbar" data-color="#f39c12" data-height={20}>90,80,-90,70,61,-83,68</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                          <td>iPhone 6 Plus</td>
-                          <td><span className="badge badge-danger">Delivered</span></td>
-                          <td>
-                            <div className="sparkbar" data-color="#f56954" data-height={20}>90,-80,90,70,-61,83,63</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                          <td>Call of Duty IV</td>
-                          <td><span className="badge badge-success">Shipped</span></td>
-                          <td>
-                            <div className="sparkbar" data-color="#00a65a" data-height={20}>90,80,90,-70,61,-83,63</div>
-                          </td>
-                        </tr>
+                        {applications.map((application, index) =>
+                          <tr>
+                            <td key={index}>{application.id}</td>
+                            <td >{application.buildingOfficer.first_name}</td>
+                            <td >{application.buildingOfficer.first_name}</td>
+                            <td >{application.appointment.appointment_time}</td>
+                          </tr>
+                          )}
                       </tbody>
                     </table>
                   </div>
