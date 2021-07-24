@@ -9,6 +9,7 @@ class Login extends Component {
       email: "",
       password: "",
       msg: "",
+      role: "",
       isLoading: false,
       redirect: false,
       errMsgEmail: "",
@@ -35,11 +36,12 @@ class Login extends Component {
         this.setState({ isLoading: false });
         if (response.status === 200) {
           localStorage.setItem("isLoggedIn", true);
-          localStorage.setItem('token',response.data.token);
+          localStorage.setItem('token', response.data.token);
           localStorage.setItem("user", response.data.user);
           this.setState({
             msg: response.data.message,
             redirect: true,
+            role: response.data.user.role.name,
           });
         }
         if (
@@ -70,12 +72,16 @@ class Login extends Component {
       });
   };
   render() {
-    if (this.state.redirect) {
-      return <Redirect to="/applicant" />;
-    }
     const login = localStorage.getItem("isLoggedIn");
     if (login) {
-      return <Redirect to="/applicant" />;
+      if (this.state.redirect) {
+        if (this.state.role == 'admin') {
+          return <Redirect to="/admin" />;
+        }
+        if (this.state.role == 'applicant') {
+          return <Redirect to="/applicant" />;
+        }
+      }
     }
     const isLoading = this.state.isLoading;
     return (

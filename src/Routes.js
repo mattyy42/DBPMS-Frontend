@@ -11,6 +11,9 @@ import Startapplication from './Applicant/Startapplication';
 import Fullpage from './Applicant/Fullpage';
 import Login from './Auth/Login';
 import Registration from './Auth/Registration';
+import Firstpage from './admin/Firstpage';
+import RegisterBO from './admin/BO/RegisterBO';
+import RegisterBoard from './admin/Board/RegisterBoard';
 function Routes() {
     return (
         <>
@@ -20,10 +23,20 @@ function Routes() {
                     <Redirect to={{ pathname: '/applicant' }} />
                 )} />
                 {/* <Route path="/home" component={Home} /> */}
-                <Route exact path="/applicant" component={Fullpage} />
+
+                {/* Admin Route */}
+                <Route exact path="/admin" component={Firstpage} />     
+                <Route exact path="/admin/registerBO" component={RegisterBO}/>
+
+                <Route exact path="/admin/registerBoard" component={RegisterBoard}/>
+
+
+
+
+                <Route exact path="/applicant" component={Fullpage} />         
                 <Route path="/applicant/apply" component={Startapplication} />
                 <Route path="/login" component={Login} />
-                {/* <Route path="/user/register" component={Register} /> */}
+
                 <Route path="/register" component={Registration} />
                 {/* <Route path="/user/login" component={Login} />
                 {/* <Route path="/user/login" component={Login} />
