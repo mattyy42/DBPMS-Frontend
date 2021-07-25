@@ -24,6 +24,7 @@ class Login extends Component {
     data[name] = value;
     this.setState(data);
   };
+  
   onSignInHandler = (e) => {
     e.preventDefault();
     this.setState({ isLoading: true });
@@ -43,10 +44,12 @@ class Login extends Component {
             redirect: true,
             role: response.data.user.role.name,
           });
+          console.log(this.state)
         }
         if (
           response.data.status === "failed" &&
           response.data.success === undefined
+          
         ) {
           this.setState({
             errMsgEmail: response.data.validation_error.email,

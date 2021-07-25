@@ -17,10 +17,13 @@ class Dashboard extends Component {
           console.log('hey');
         }
         this.setState({
+         
           applications: response.data.data,
           // building_officer: response.data.buildingOfficer,
         })
+        
       })
+      
   }
   render() {
     const { applications } = this.state;
@@ -133,7 +136,7 @@ class Dashboard extends Component {
                           <tr>
                             <td key={index}>{application.id}</td>
                             <td >{application.buildingOfficer.first_name}</td>
-                            <td >{application.buildingOfficer.first_name}</td>
+                            <td >{application.bureau}</td>
                             <td >{application.appointment.appointment_time}</td>
                           </tr>
                           )}

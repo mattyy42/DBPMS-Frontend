@@ -38,7 +38,7 @@ class Sidebar extends Component {
                                                 <p>Start Application</p>
                                             </a>
                                         </li>
-</Link>                                  <Link to="/applicant/apply">       
+</Link>                                  <Link to="/applicant/view">       
                                         <li className="nav-item">
                                             <a  className="nav-link">
                                                 <i className="far fa-circle nav-icon" />

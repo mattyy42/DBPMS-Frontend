@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Apply from './Planconsent'
-import Dashboard from './Dashboard'
+import Planconsent from './Application/Plan_Consent/Planconsent' 
 import Header from './Header'
 import Sidebar from './Sidebar'
 
@@ -11,7 +10,7 @@ export default class Startapplication extends Component {
             <div>
                 <Header />
                 <Sidebar />
-                <Apply />
+                <Planconsent />
                
 
             </div>
