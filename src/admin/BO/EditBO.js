@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import Header from '../../Applicant/Header'
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
 import Sidebar from '../Sidebar'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
-const MySwal = withReactContent(Swal)
 
 
-class RegisterBO extends Component {
+
+class EditBO extends Component {
     constructor(props) {
         super(props);
         this.state = {
             signupData: {
+                id:"",
                 first_name: "",
                 last_name: "",
                 email: "",
@@ -28,6 +27,24 @@ class RegisterBO extends Component {
         };
     }
     componentDidMount() {
+        const { id } = this.props.match.params;
+        axios.get(`http://127.0.0.1:8000/api/admin/getUserById/${id}`).then(
+            (response) => {
+                this.setState({
+                    signupData: {
+                        ...this.state.signupData,
+                        id:response.data.data.id,
+                        first_name: response.data.data.first_name,
+                        last_name: response.data.data.last_name,
+                        email: response.data.data.email,
+                        password: response.data.data.password,
+                        phone_number: response.data.data.phone_number,
+                        bureau: response.data.data.bureau,
+                        role: response.data.data.role,
+                    }
+                })
+            }
+        )
         axios.get('http://127.0.0.1:8000/api/getAllBureau').then(
             (response) => {
                 this.setState({
@@ -44,22 +61,14 @@ class RegisterBO extends Component {
     onSubmitHandler = (e) => {
         e.preventDefault();
         this.setState({ isLoading: true });
+        console.log(this.state.signupData)
         axios
-            .post("http://localhost:8000/api/admin/registerBuildingOfficer", this.state.signupData)
+            .put("http://127.0.0.1:8000/api/admin/editBO", this.state.signupData)
             .then((response) => {
+
                 this.setState({ isLoading: false });
                 if (response.status === 200) {
-                    MySwal.fire({
-                        title: <p>Hello World</p>,
-                        footer: 'Copyright 2018',
-                        didOpen: () => {
-                          // `MySwal` is a subclass of `Swal`
-                          //   with all the same instance & static methods
-                          MySwal.clickConfirm()
-                        }
-                      }).then(() => {
-                        return MySwal.fire(<p>Shorthand works too</p>)
-                      })
+
                     this.setState({
                         msg: response.message,
                         signupData: {
@@ -92,7 +101,7 @@ class RegisterBO extends Component {
     };
     render() {
         return (
-            <div>a
+            <div>
                 <Header />
                 <Sidebar />
                 <div className="content-wrapper">
@@ -157,7 +166,7 @@ class RegisterBO extends Component {
                                                 <div className="form-group">
                                                     <label htmlFor="bureau">Bureau</label>
                                                     <select name="bureau" onChange={this.onChangehandler} className="custom-select">
-                                                        <option value="">Select Role</option>
+                                                        <option value="">Select Bureau</option>
                                                         {this.state.allBureau.map((bureau) => (
 
                                                             <option value={bureau.subcity}>{bureau.subcity}</option>
@@ -193,4 +202,4 @@ class RegisterBO extends Component {
         )
     }
 }
-export default RegisterBO;
+export default EditBO;

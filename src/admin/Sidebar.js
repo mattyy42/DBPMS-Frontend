@@ -39,22 +39,22 @@ class Sidebar extends Component {
                                                 </a>
                                             </li>
                                         </Link>
-                                        <Link to="/applicant/apply">
+                                        <Link to="/admin/boards">
                                             <li className="nav-item">
                                                 <a className="nav-link">
                                                     <i className="far fa-circle nav-icon" />
-                                                    <p>View all boards</p>
+                                                    <p>Manage Board of appliance</p>
                                                 </a>
                                             </li>
                                         </Link>
-                                        <Link to="/applicant/apply">
+                                        {/* <Link to="/applicant/apply">
                                             <li className="nav-item">
                                                 <a className="nav-link">
                                                     <i className="far fa-circle nav-icon" />
                                                     <p>Manage boards</p>
                                                 </a>
                                             </li>
-                                        </Link>
+                                        </Link> */}
 
                                     </ul>
                                 </li>
@@ -75,7 +75,7 @@ class Sidebar extends Component {
                                                 </a>
                                             </li>
                                         </Link>
-                                        <Link to="/applicant/apply">
+                                        <Link to="/admin/officer">
                                             <li className="nav-item">
                                                 <a className="nav-link">
                                                     <i className="far fa-circle nav-icon" />
