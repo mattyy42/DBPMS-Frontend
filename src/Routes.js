@@ -15,6 +15,7 @@ import Firstpage from './admin/Firstpage';
 import RegisterBO from './admin/BO/RegisterBO';
 import RegisterBoard from './admin/Board/RegisterBoard';
 import Viewapplication from './Applicant/Viewapplication';
+import Getstarted from './Applicant/Getstarted';
 function Routes() {
     return (
         <>
@@ -36,6 +37,7 @@ function Routes() {
 
                 <Route exact path="/applicant" component={Fullpage} />         
                 <Route path="/applicant/apply" component={Startapplication} />
+                <Route path="/applicant/getstarted" component={Getstarted} />
                 <Route path="/applicant/view" component={Viewapplication} />
                 <Route path="/login" component={Login} />
 
