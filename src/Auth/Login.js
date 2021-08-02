@@ -43,7 +43,7 @@ class Login extends Component {
           this.setState({
             msg: response.data.message,
             redirect: true,
-            role: response.data.user.role.name,
+            role: response.data.user.role,
           });
           console.log(this.state)
         }
