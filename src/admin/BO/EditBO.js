@@ -5,8 +5,6 @@ import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 import Sidebar from '../Sidebar'
 
-
-
 class EditBO extends Component {
     constructor(props) {
         super(props);
