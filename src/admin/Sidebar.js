@@ -90,6 +90,26 @@ class Sidebar extends Component {
                                 <li className="nav-item menu">
                                     <a className="nav-link ">
                                         <i className="nav-icon fas fa-file" />
+                                        <p>Bureaus
+                                            <i className="right fas fa-angle-left" />
+                                        </p>
+                                    </a>
+                                    <ul className="nav nav-treeview">
+                                        <Link to="/admin/manageBureau">
+                                            <li className="nav-item">
+                                                <a className="nav-link">
+                                                    <i className="far fa-circle nav-icon" />
+                                                    <p>Manage Bureaus</p>
+                                                </a>
+                                            </li>
+                                        </Link>
+
+
+                                    </ul>
+                                </li>
+                                {/* <li className="nav-item menu">
+                                    <a className="nav-link ">
+                                        <i className="nav-icon fas fa-file" />
                                         <p>Manage Portal
                                             <i className="right fas fa-angle-left" />
                                         </p>
@@ -114,7 +134,7 @@ class Sidebar extends Component {
 
 
                                     </ul>
-                                </li>
+                                </li> */}
 
 
 
