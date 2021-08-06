@@ -20,7 +20,6 @@ class ShowTableBO extends Component {
                     console.log('hey');
                 }
                 this.setState({
-
                     buildingOfficers: response.data.data,
                     // building_officer: response.data.buildingOfficer,
                 })
@@ -28,11 +27,15 @@ class ShowTableBO extends Component {
             })
 
     }
-    onEditSubmit = (id) => {
-        this.setState({ isLoading: true });
-
-
-    }
+    removeData = async id =>{
+        await axios
+          .delete(`http://localhost:8000/api/admin/deleteBuildingOfficer/${id}`)
+          this.setState((prev) => ({
+            buildingOfficers: prev.buildingOfficers.filter(
+              (buildingOfficer) => buildingOfficer.id !== id
+            )
+          })); 
+      };
     render() {
         const { buildingOfficers } = this.state;
         return (
@@ -72,12 +75,12 @@ class ShowTableBO extends Component {
                                         {buildingOfficers.map((buildingOfficer, index) =>
                                             <tr>
                                                 <td key={index}>{buildingOfficer.first_name}</td>
-                                                <td >{buildingOfficer.role.bureau}</td>
+                                                <td >{buildingOfficer.bureau}</td>
                                                 <td >{buildingOfficer.role.active_applications}</td>
                                                 <td >{buildingOfficer.phone_number}</td>
                                                 <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
                                                 <td ><Link to={`/admin/edit/${buildingOfficer.id}`}><button class="btn btn-block btn-outline-warning btn-xs">Edit</button></Link></td>
-                                                <td ><button type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</button></td>
+                                                <td ><button onClick={this.removeData.bind(this,buildingOfficer.id)} type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</button></td>
                                             </tr>
                                         )}
                                     </tbody>
