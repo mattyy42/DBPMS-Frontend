@@ -8,6 +8,8 @@ export default class Planconsent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      redirect: false,
+      msg: "",
       signupData: {
         city: "",
         sub_city: "",
@@ -30,8 +32,8 @@ export default class Planconsent extends Component {
         TIN_number: "",
         isLoading: "",
       },
-      msg: "",
-      redirect: false,
+      
+      
     };
   }
   onChangehandler = (e, key) => {
@@ -56,9 +58,10 @@ export default class Planconsent extends Component {
       .then((response) => {
         console.log(response.data)
         this.setState({ isLoading: false })
-        if (response.data.status === 200) {
-          localStorage.setItem("isSubmitted", true);
-          console.log(response)
+        console.log(response.status)
+        if (response.status === 201) {
+          localStorage.setItem('isSubmitted', true);
+         
           this.setState({
             msg: response.data.message,
             redirect: true,
@@ -100,12 +103,11 @@ export default class Planconsent extends Component {
 
   render() {
     const isLoading = this.state.isLoading;
-    const submitted = localStorage.getItem("isSubmitted");
-    console.log(submitted)
-    console.log(this.state.redirect)
+    const submitted = localStorage.getItem('isSubmitted');
+    console.log(submitted) 
     if (submitted) {
       if (this.state.redirect) {
-        return <Redirect to="/admin" />;
+        return <Redirect to="/applicant/success" />;
       };
     }
 
