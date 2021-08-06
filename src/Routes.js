@@ -16,19 +16,16 @@ import RegisterBO from './admin/BO/RegisterBO';
 import ShowTableBO from './admin/BO/ShowTableBO';
 import RegisterBoard from './admin/Board/RegisterBoard';
 import Viewapplication from './Applicant/Viewapplication';
-<<<<<<< HEAD
 import Getstarted from './Applicant/Getstarted';
-=======
 import ShowTableBoard from './admin/Board/ShowTableBoard';
 import EditBO from './admin/BO/EditBO';
->>>>>>> fcecbd06d84045ad0237d0adeb762077a37bc13a
 function Routes() {
     return (
         <>
             {/* <Header /> */}
             <Switch>
                 <Route exact path="/" render={props => (
-                    <Redirect to={{ pathname: '/applicant' }} />
+                    <Redirect to={{ pathname: '/login' }} />
                 )} />
                 {/* <Route path="/home" component={Home} /> */}
 

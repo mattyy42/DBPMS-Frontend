@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-
+import {Link} from 'react-router-dom';
+  
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -138,7 +139,7 @@ class Login extends Component {
                 <a href="forgot-password.html">I forgot my password</a>
               </p>
               <p className="mb-0">
-                <a href="register.html" className="text-center">Register as New Applicant</a>
+               <Link to="/register" > <a className="text-center">Register as New Applicant</a></Link>
               </p>
             </div>
             {/* /.login-card-body */}
