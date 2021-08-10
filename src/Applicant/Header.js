@@ -15,6 +15,8 @@ class Header extends Component {
         
     };
     render() {
+
+
         return (
             <div>
                 <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -65,7 +67,7 @@ class Header extends Component {
                                                 Brad Diesel
                   <span className="float-right text-sm text-danger"><i className="fas fa-star" /></span>
                                             </h3>
-                                            <p className="text-sm">Call me whenever you can...</p>
+                                            {/* <p className="text-sm">{this.props.history.data.notif}ddd</p> */}
                                             <p className="text-sm text-muted"><i className="far fa-clock mr-1" /> 4 Hours Ago</p>
                                         </div>
                                     </div>

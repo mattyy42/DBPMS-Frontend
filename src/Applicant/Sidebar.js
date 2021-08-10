@@ -1,10 +1,45 @@
 import React, { Component } from 'react'
-
+import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 class Sidebar extends Component {
+
+    constructor(props) {
+         super(props);
+         this.state = {
+
+            first_name: "",
+            last_name: "",
+            email: "",
+            password: "",
+            confirm_password: "",
+            phone_number: "",
+        }
+    }
+    componentDidMount(){
+        const tokenString = localStorage.getItem('token');
+        axios
+        .get("http://localhost:8000/api/user",
+            { headers: { authorization: `Bearer ${tokenString}` } })
+        .then((response) => {
+            console.log(response.data.first_name)
+
+            if (response.massage == "unauthenticated") {
+                console.log('hey');
+            }
+            this.setState({
+
+                first_name: response.data.first_name,
+                last_name: response.data.last_name,
+                // building_officer: response.data.buildingOfficer,
+            })
+
+        })
+    
+    }
     render() {
+        console.log(this.state.first_name)
 
         return (
             <div>
@@ -18,7 +53,7 @@ class Sidebar extends Component {
                                 <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
                             </div>
                             <div className="info">
-                                <a href="#" className="d-block">Alexander Pierce</a>
+                                <a href="#" className="d-block">{this.state.first_name} {this.state.last_name}</a>
                             </div>
                         </div>
                         <nav className="mt-2">
@@ -38,7 +73,7 @@ class Sidebar extends Component {
                                                     <p>Get Started</p>
                                                 </a>
                                             </li>
-                                        </Link>                     
+                                        </Link>
                                         <Link to="/applicant/view">
                                             <li className="nav-item">
                                                 <a className="nav-link">
@@ -85,19 +120,19 @@ class Sidebar extends Component {
 
                                     </ul>
                                 </li>
-                                
+
                                 <Link to="/applicant/apply">
                                     <li className="nav-item">
                                         <a className="nav-link">
                                             <i className="nav-icon fa fa-bell" />
                                             <p>
-                                            &#160; Notification
+                                                &#160; Notification
                                                 {/* <span className="right badge badge-danger">New</span> */}
                                             </p>
                                         </a>
                                     </li>
                                 </Link>
-                               
+
 
                                 <li className="nav-item">
                                     <a href="pages/gallery.html" className="nav-link">

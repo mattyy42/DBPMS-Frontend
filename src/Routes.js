@@ -24,6 +24,8 @@ import ManageBureaus from './admin/Bureau/ManageBureaus';
 import AddBureau from './admin/Bureau/AddBureau';
 import Thanksforsubmitingpc from './Applicant/Thanksforsubmitingpc';
 import Submitcomplain from './Applicant/Submitcomplain';
+import Applicationform from './Applicant/Applicationform';
+import Submitcomplaindone from './Applicant/Submitcomplaindone';
 function Routes() {
     return (
         <>
@@ -49,7 +51,9 @@ function Routes() {
 
                 <Route exact path="/applicant" component={Fullpage} />         
                 <Route path="/applicant/apply" component={Startapplication} />
+                <Route path="/applicant/applicationform" component={Applicationform} />
                 <Route path="/applicant/complain" component={Submitcomplain} />
+                <Route path="/applicant/complain/submit" component={Submitcomplaindone} />
                 <Route path="/applicant/getstarted" component={Getstarted} />
                 <Route path="/applicant/success" component={Thanksforsubmitingpc} />
                 

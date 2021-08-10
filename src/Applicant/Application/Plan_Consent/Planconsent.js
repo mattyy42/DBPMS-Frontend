@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
-
+import Swal from "sweetalert2";
 export default class Planconsent extends Component {
 
   userData;
   constructor(props) {
+    
+    
     super(props);
+    this.HandleClick = this.HandleClick.bind(this);
     this.state = {
       redirect: false,
       msg: "",
@@ -36,6 +39,43 @@ export default class Planconsent extends Component {
       
     };
   }
+  HandleClick() {  
+    Swal.fire({  
+      title: 'Success',  
+      type: 'success',  
+      text: 'successfuly applied for plan consent',  
+    });  
+  }
+
+  HandleClickAutoclose() {  
+    let timerInterval  
+    Swal.fire({  
+      title: 'Auto close alert!',  
+      html: 'I will close in <b></b> milliseconds.',  
+      timer: 1000,  
+      timerProgressBar: true,  
+      onBeforeOpen: () => {  
+        Swal.showLoading()  
+        timerInterval = setInterval(() => {  
+          const content = Swal.getContent()  
+          if (content) {  
+            const b = content.querySelector('b')  
+            if (b) {  
+              b.textContent = Swal.getTimerLeft()  
+            }  
+          }  
+        }, 100)  
+      },  
+      onClose: () => {  
+        clearInterval(timerInterval)  
+      }  
+    }).then((result) => {  
+      if (result.dismiss === Swal.DismissReason.timer) {  
+        console.log('I was closed by the timer')  
+      }  
+    })  
+  }  
+  
   onChangehandler = (e, key) => {
     const { signupData } = this.state;
     signupData[e.target.name] = e.target.value;
@@ -58,10 +98,12 @@ export default class Planconsent extends Component {
       .then((response) => {
         console.log(response.data)
         this.setState({ isLoading: false })
-        console.log(response.status)
+        // console.log('status2 ',response.status)
         if (response.status === 201) {
           localStorage.setItem('isSubmitted', true);
+          this.HandleClick();
          
+          console.log('status ',response.status);
           this.setState({
             msg: response.data.message,
             redirect: true,
@@ -87,10 +129,14 @@ export default class Planconsent extends Component {
               TIN_number: "",
             },
           });
+          
+         
+          
           setTimeout(() => {
             this.setState({ msg: "" });
           }, 2000);
         }
+       
 
         if (response.data.status === "failed") {
           this.setState({ msg: response.data.message });
@@ -99,7 +145,12 @@ export default class Planconsent extends Component {
           }, 2000);
         }
       });
+      // function sub(params) {
+      //   this.HandleClick();
+      //   this.onSubmitHandler();
+      // }
   };
+  
 
   render() {
     const isLoading = this.state.isLoading;
@@ -134,7 +185,7 @@ export default class Planconsent extends Component {
                 determines whether the business will apply at the federal level or sub-city level.</p>
             </div>
           </div>
-          <form>
+          <form  onSubmit={this.onSubmitHandler}> 
             <div className="row">
 
               <div className="col-md">
@@ -263,7 +314,8 @@ export default class Planconsent extends Component {
                 {/* /.card */}
               </div>
             </div> <div className="card-footer">
-              <button type="submit" className="btn btn-primary" onClick={this.onSubmitHandler}>Submit
+            
+              <button type="submit" class="btn btn-primary" >Submit
                 {isLoading ? (
                   <span
                     className="spinner-border spinner-border-sm"
