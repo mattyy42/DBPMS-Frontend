@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-
+import {Link} from 'react-router-dom';
+  
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -37,8 +38,10 @@ class Login extends Component {
         this.setState({ isLoading: false });
         if (response.status === 200) {
           localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("isSubmitted", false);
           localStorage.setItem('token', response.data.token);
           localStorage.setItem("user", response.data.user);
+          console.log(localStorage.getItem('token'))
           this.setState({
             msg: response.data.message,
             redirect: true,
@@ -78,10 +81,10 @@ class Login extends Component {
     const login = localStorage.getItem("isLoggedIn");
     if (login) {
       if (this.state.redirect) {
-        if (this.state.role == 'admin') {
+        if (this.state.role.name == 'admin') {
           return <Redirect to="/admin" />;
         }
-        if (this.state.role == 'applicant') {
+        if (this.state.role.name == 'applicant') {
           return <Redirect to="/applicant" />;
         }
         if(this.state.role == 'BO'){
@@ -140,7 +143,7 @@ class Login extends Component {
                 <a href="forgot-password.html">I forgot my password</a>
               </p>
               <p className="mb-0">
-                <a href="register.html" className="text-center">Register as New Applicant</a>
+               <Link to="/register" > <a className="text-center">Register as New Applicant</a></Link>
               </p>
             </div>
             {/* /.login-card-body */}

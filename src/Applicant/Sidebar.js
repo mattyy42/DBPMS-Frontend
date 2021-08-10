@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 class Sidebar extends Component {
     render() {
-        
+
         return (
             <div>
                 <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -24,82 +24,84 @@ class Sidebar extends Component {
                         <nav className="mt-2">
                             <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 <li className="nav-item menu">
-                                    <a  className="nav-link ">
+                                    <a className="nav-link ">
                                         <i className="nav-icon fas fa-file" />
                                         <p>My Applications
                                             <i className="right fas fa-angle-left" />
                                         </p>
                                     </a>
                                     <ul className="nav nav-treeview">
-                                    <Link to="/applicant/apply">
-                                        <li className="nav-item">
-                                            <a  className="nav-link">
-                                                <i className="far fa-circle nav-icon" />
-                                                <p>Start Application</p>
-                                            </a>
-                                        </li>
-</Link>                                  <Link to="/applicant/view">       
-                                        <li className="nav-item">
-                                            <a  className="nav-link">
-                                                <i className="far fa-circle nav-icon" />
-                                                <p>View My application</p>
-                                            </a>
-                                        </li>
+                                        <Link to="/applicant/getstarted">
+                                            <li className="nav-item">
+                                                <a className="nav-link">
+                                                    <i className="far fa-circle nav-icon" />
+                                                    <p>Get Started</p>
+                                                </a>
+                                            </li>
+                                        </Link>                     
+                                        <Link to="/applicant/view">
+                                            <li className="nav-item">
+                                                <a className="nav-link">
+                                                    <i className="far fa-circle nav-icon" />
+                                                    <p>View My application</p>
+                                                </a>
+                                            </li>
                                         </Link>
                                         <Link to="/applicant/apply">
-                                        <li className="nav-item">
-                                            <a className="nav-link">
-                                                <i className="far fa-circle nav-icon" />
-                                                <p>Track My Applications</p>
-                                            </a>
-                                        </li></Link>
+                                            <li className="nav-item">
+                                                <a className="nav-link">
+                                                    <i className="far fa-circle nav-icon" />
+                                                    <p>Track My Applications</p>
+                                                </a>
+                                            </li></Link>
 
                                     </ul>
                                 </li>
 
                                 <li className="nav-item menu">
-                                    <a  className="nav-link ">
+                                    <a className="nav-link ">
                                         <i className="nav-icon fas fa-file" />
                                         <p>My Complain
                                             <i className="right fas fa-angle-left" />
                                         </p>
                                     </a>
                                     <ul className="nav nav-treeview">
-                                    <Link to="/applicant/apply">
-                                        <li className="nav-item">
-                                            <a className="nav-link">
-                                                <i className="far fa-circle nav-icon" />
-                                                <p>Submit Complain</p>
-                                            </a>
-                                        </li>
+                                        <Link to="/applicant/complain">
+                                            <li className="nav-item">
+                                                <a className="nav-link">
+                                                    <i className="far fa-circle nav-icon" />
+                                                    <p>Submit Complain</p>
+                                                </a>
+                                            </li>
                                         </Link>
-                                         <Link to="/applicant/apply">
-                                        <li className="nav-item">
-                                            <a  className="nav-link">
-                                                <i className="far fa-circle nav-icon" />
-                                                <p>View Complain</p>
-                                            </a>
-                                        </li>
+                                        <Link to="/applicant/apply">
+                                            <li className="nav-item">
+                                                <a className="nav-link">
+                                                    <i className="far fa-circle nav-icon" />
+                                                    <p>View Complain</p>
+                                                </a>
+                                            </li>
                                         </Link>
 
                                     </ul>
                                 </li>
                                 
-                                <li className="nav-item">
                                 <Link to="/applicant/apply">
-                                    <a className="nav-link">
-                                        <i className="nav-icon fas fa-bell" />
-                                        <p>
-                                            Notification
-                                            <span className="right badge badge-danger">New</span>
-                                        </p>
-                                    </a>
-                                    </Link>
-                                </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link">
+                                            <i className="nav-icon fa fa-bell" />
+                                            <p>
+                                            &#160; Notification
+                                                {/* <span className="right badge badge-danger">New</span> */}
+                                            </p>
+                                        </a>
+                                    </li>
+                                </Link>
+                               
 
                                 <li className="nav-item">
                                     <a href="pages/gallery.html" className="nav-link">
-                                        <i className="nav-icon far fa-user" />
+                                        <i className="nav-icon fa fa-user" />
                                         <p>
                                             Edit Profile
                                         </p>
@@ -123,4 +125,4 @@ class Sidebar extends Component {
     }
 }
 
-export default withRouter(Sidebar); 
+export default withRouter(Sidebar);
