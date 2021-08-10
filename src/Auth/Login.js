@@ -84,6 +84,9 @@ class Login extends Component {
         if (this.state.role == 'applicant') {
           return <Redirect to="/applicant" />;
         }
+        if(this.state.role == 'BO'){
+          return <Redirect to="/bo/dashboard"/>
+        }
       }
     }
     const isLoading = this.state.isLoading;

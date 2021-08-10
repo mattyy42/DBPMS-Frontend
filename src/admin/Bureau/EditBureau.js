@@ -7,7 +7,8 @@ class EditBureau extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            signupData: {
+            Data: {
+                id:"",
                 bureau: "",
                 subcity: "",
                 isLoading: "",
@@ -15,29 +16,36 @@ class EditBureau extends Component {
             msg: "",
         };
     }
-    componentDidCatch(){
+    componentDidMount() {
         const { id } = this.props.match.params;
-        axios.get(`http://127.0.0.1:8000/api/admin/getUserById/${id}`).then(
+        axios.get(`http://127.0.0.1:8000/api/getBureau/${id}`).then(
             (response) => {
-                
+                this.setState({
+                    Data: {
+                        ...this.state.Data,
+                        id:response.data.data.id,
+                        Bureau: response.data.data.bureau,
+                        subcity: response.data.data.subcity,
+                    }
+                })
             })
     }
     onChangehandler = (e, key) => {
-        const { signupData } = this.state;
-        signupData[e.target.name] = e.target.value;
-        this.setState({ signupData });
+        const { Data } = this.state;
+        Data[e.target.name] = e.target.value;
+        this.setState({ Data });
     };
     onSubmitHandler = (e) => {
         e.preventDefault();
         this.setState({ isLoading: true });
         axios
-            .post("http://localhost:8000/api/addBureau", this.state.signupData)
+            .put("http://localhost:8000/api/editBureau", this.state.Data)
             .then((response) => {
                 this.setState({ isLoading: false });
                 if (response.status === 200) {
                     this.setState({
                         msg: response.message,
-                        signupData: {
+                        Data: {
                             Bureau: "",
                             subcity: "",
                         },
@@ -76,7 +84,7 @@ class EditBureau extends Component {
                         <div className="container-fluid">
                             <div className="row mb-2">
                                 <div className="col-sm-6">
-                                    <h1>Add Bureau</h1>
+                                    <h1>Edit Bureau</h1>
                                 </div>
                                 <div className="col-sm-6">
                                     <ol className="breadcrumb float-sm-right">
@@ -104,12 +112,12 @@ class EditBureau extends Component {
                                             <div className="card-body">
                                                 <div className="form-group">
                                                     <label htmlFor="firstInput">Enter SubCity</label>
-                                                    <input type="text" name="subcity" className="form-control" id="firstInput" placeholder="Enter subcity" value={this.state.signupData.subcity} onChange={this.onChangehandler} />
+                                                    <input type="text" name="subcity" className="form-control" id="firstInput" placeholder="Enter subcity" value={this.state.Data.subcity} onChange={this.onChangehandler} />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="lastInput">Enter Bureau</label>
-                                                    <input type="text" name="Bureau" className="form-control" id="lastInput" placeholder="Enter bureau code" value={this.state.signupData.Bureau} onChange={this.onChangehandler} />
-                                                </div>            
+                                                    <input type="text" name="Bureau" className="form-control" id="lastInput" placeholder="Enter bureau code" value={this.state.Data.Bureau} onChange={this.onChangehandler} />
+                                                </div>
                                             </div>
                                             {/* /.card-body */}
                                             <div className="card-footer">

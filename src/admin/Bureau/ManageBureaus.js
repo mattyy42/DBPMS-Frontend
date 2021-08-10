@@ -42,7 +42,7 @@ class ManageBureaus extends Component {
                         <div className="card-header border-transparent">
                             <h3 className="card-title">Manage Bureaus</h3>
 
-                        <Link to="/admin/bureauAdd"><button type="button" style={{ marginLeft: 200 }} class="btn btn-outline-primary btn-xs">Add Bureau</button></Link>
+                            <Link to="/admin/bureauAdd"><button type="button" style={{ marginLeft: 200 }} class="btn btn-outline-primary btn-xs">Add Bureau</button></Link>
 
                             <div className="card-tools">
                                 <button type="button" className="btn btn-tool" data-card-widget="collapse">
@@ -72,7 +72,7 @@ class ManageBureaus extends Component {
                                                 <td key={bureau.id}>{bureau.bureau}</td>
                                                 <td >{bureau.subcity}</td>
                                                 <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
-                                                <td ><Link to={`/admin/edit/${bureau.id}`}><button type="button" class="btn btn-block btn-outline-warning btn-xs">Edit</button></Link></td>
+                                                <td ><Link to={`/admin/bureauEdit/${bureau.id}`}><button type="button" class="btn btn-block btn-outline-warning btn-xs">Edit</button></Link></td>
                                                 <td ><button onClick={this.removeData.bind(this, bureau.id)} type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</button></td>
                                             </tr>
                                         )}
