@@ -12,6 +12,7 @@ import Fullpage from './Applicant/Fullpage';
 import Login from './Auth/Login';
 import Registration from './Auth/Registration';
 import Firstpage from './admin/Firstpage';
+import BOFirstPage from './BO/BOFirstPage' ;
 import RegisterBO from './admin/BO/RegisterBO';
 import ShowTableBO from './admin/BO/ShowTableBO';
 import RegisterBoard from './admin/Board/RegisterBoard';
@@ -22,6 +23,8 @@ import EditBO from './admin/BO/EditBO';
 import EditBoard from './admin/Board/EditBoard';
 import ManageBureaus from './admin/Bureau/ManageBureaus';
 import AddBureau from './admin/Bureau/AddBureau';
+import ProfileBO from './BO/ProfileBO';
+import EditBureau from './admin/Bureau/EditBureau';
 import Thanksforsubmitingpc from './Applicant/Thanksforsubmitingpc';
 import Submitcomplain from './Applicant/Submitcomplain';
 import Applicationform from './Applicant/Applicationform';
@@ -47,7 +50,7 @@ function Routes() {
                 <Route exact path="/admin/bordEdit/:id" component={EditBoard}/>
                 <Route exact path="/admin/manageBureau" component={ManageBureaus}/>
                 <Route exact path="/admin/bureauAdd" component={AddBureau}/>
-                {/* <Route exact path="/admin/bureauEdit:id" component={}/> */}
+                <Route exact path="/admin/bureauEdit/:id" component={EditBureau}/>
 
                 <Route exact path="/applicant" component={Fullpage} />         
                 <Route path="/applicant/apply" component={Startapplication} />
@@ -58,9 +61,12 @@ function Routes() {
                 <Route path="/applicant/success" component={Thanksforsubmitingpc} />
                 
                 <Route path="/applicant/view" component={Viewapplication} />
+                
                 <Route path="/login" component={Login} />
-
                 <Route path="/register" component={Registration} />
+
+                <Route exact path="/bo/dashboard" component={BOFirstPage}/>
+                <Route path="/profileBO" component={ProfileBO}/>
                 {/* <Route path="/user/login" component={Login} />
                 {/* <Route path="/user/login" component={Login} />
                 
