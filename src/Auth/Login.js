@@ -13,8 +13,7 @@ class Login extends Component {
       role: "",
       isLoading: false,
       redirect: false,
-      errMsgEmail: "",
-      errMsgPwd: "",
+      isShowError: false,
       errMsg: "",
     };
   }
@@ -35,56 +34,44 @@ class Login extends Component {
         password: this.state.password,
       })
       .then((response) => {
+        console.log(response.data)
         this.setState({ isLoading: false });
         if (response.status === 200) {
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("isSubmitted", false);
           localStorage.setItem('token', response.data.token);
           localStorage.setItem("user", response.data.user);
-         
+          console.log(response.data.user.role);
           this.setState({
             msg: response.data.message,
             redirect: true,
             role: response.data.user.role,
           });
-         
         }
+       
+      }).catch((err) =>{
+        //handle error
         if (
-          response.data.status === "failed" &&
-          response.data.success === undefined
+          err.response.status === 401) {
+          this.setState({
+           // errMsg: errresponse.data.error,
+           isLoading:false,
+            isShowError: true,
+          });
 
-        ) {
-          this.setState({
-            errMsgEmail: response.data.validation_error.email,
-            errMsgPwd: response.data.validation_error.password,
-          });
-          setTimeout(() => {
-            this.setState({ errMsgEmail: "", errMsgPwd: "" });
-          }, 2000);
-        } else if (
-          response.status === "failed" &&
-          response.success === false
-        ) {
-          this.setState({
-            errMsg: response.data.message,
-          });
-          setTimeout(() => {
-            this.setState({ errMsg: "" });
-          }, 2000);
         }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    });
+      
   };
   render() {
     const login = localStorage.getItem("isLoggedIn");
     if (login) {
+      console.log(this.state.role.name);
       if (this.state.redirect) {
-        if (this.state.role.name == 'admin') {
+        if (this.state.role == 'admin') {
           return <Redirect to="/admin" />;
         }
-        if (this.state.role.name == 'applicant') {
+        if (this.state.role == 'applicant') {
           return <Redirect to="/applicant" />;
         }
         if (this.state.role == 'BO') {
@@ -93,6 +80,7 @@ class Login extends Component {
       }
     }
     const isLoading = this.state.isLoading;
+    const isShowError=this.state.isShowError;
     return (
       <div className="hold-transition login-page">
         <div className="login-box">
@@ -103,6 +91,12 @@ class Login extends Component {
           <div className="card">
             <div className="card-body login-card-body">
               <p className="login-box-msg">Sign in to start your session</p>
+              {isShowError ? (
+                < div className="alert alert-danger alert-dismissible fade show" role="alert">Invalid login credentials. Please try again.<button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+              ) :
+                (<span></span>)
+              }
+
               <form>
                 <div className="input-group mb-3">
                   <input type="email" name="email" value={this.state.email} onChange={this.onChangehandler} className="form-control" placeholder="Email" />
