@@ -12,7 +12,7 @@ import Fullpage from './Applicant/Fullpage';
 import Login from './Auth/Login';
 import Registration from './Auth/Registration';
 import Firstpage from './admin/Firstpage';
-import BOFirstPage from './BO/BOFirstPage' ;
+import BOFirstPage from './BO/BOFirstPage';
 import RegisterBO from './admin/BO/RegisterBO';
 import ShowTableBO from './admin/BO/ShowTableBO';
 import RegisterBoard from './admin/Board/RegisterBoard';
@@ -28,7 +28,12 @@ import EditBureau from './admin/Bureau/EditBureau';
 import Thanksforsubmitingpc from './Applicant/Thanksforsubmitingpc';
 import Submitcomplain from './Applicant/Submitcomplain';
 import Complain from './Applicant/Complain';
+import ApplicantRoute from './ApplicantRoute';
+import BuildingOfficerRoute from './BuildingOfficerRoute';
+import AdminRoute from './AdminRoute';
+import Unauthorized from './Unauthorized';
 function Routes() {
+    const role = localStorage.getItem("role");
     return (
         <>
             {/* <Header /> */}
@@ -39,32 +44,35 @@ function Routes() {
                 {/* <Route path="/home" component={Home} /> */}
 
                 {/* Admin Route */}
-                <Route exact path="/admin" component={Firstpage} />     
-                <Route exact path="/admin/registerBO" component={RegisterBO}/>
-                <Route exact path="/admin/officer" component={ShowTableBO}/>
-                <Route exact path="/admin/edit/:id" component={EditBO}/>
+            
+                <AdminRoute exact path="/admin" component={Firstpage} />
+                <AdminRoute exact path="/admin/registerBO" component={RegisterBO} />
+                <AdminRoute exact path="/admin/officer" component={ShowTableBO} />
+                <AdminRoute exact path="/admin/edit/:id" component={EditBO} />
 
-                <Route exact path="/admin/registerBoard" component={RegisterBoard}/>
-                <Route exact path="/admin/boards" component={ShowTableBoard}/>
-                <Route exact path="/admin/bordEdit/:id" component={EditBoard}/>
-                <Route exact path="/admin/manageBureau" component={ManageBureaus}/>
-                <Route exact path="/admin/bureauAdd" component={AddBureau}/>
-                <Route exact path="/admin/bureauEdit/:id" component={EditBureau}/>
+                <AdminRoute exact path="/admin/registerBoard" component={RegisterBoard} />
+                <AdminRoute exact path="/admin/boards" component={ShowTableBoard} />
+                <AdminRoute exact path="/admin/bordEdit/:id" component={EditBoard} />
+                <AdminRoute exact path="/admin/manageBureau" component={ManageBureaus} />
+                <AdminRoute exact path="/admin/bureauAdd" component={AddBureau} />
+                <AdminRoute exact path="/admin/bureauEdit/:id" component={EditBureau} />) 
+        
 
-                <Route exact path="/applicant" component={Fullpage} />         
-                <Route path="/applicant/apply" component={Startapplication} />
-                <Route path="/applicant/complain" component={Submitcomplain} />
-                <Route path="/applicant/getstarted" component={Getstarted} />
-                <Route path="/applicant/success" component={Thanksforsubmitingpc} />
-                
-                <Route path="/applicant/view" component={Viewapplication} />
-                <Route exact path="/applicant/submitComplain/:id" component={Complain}/>
+                <ApplicantRoute exact path="/applicant" component={Fullpage} />
+                <ApplicantRoute path="/applicant/apply" component={Startapplication} />
+                <ApplicantRoute path="/applicant/complain" component={Submitcomplain} />
+                <ApplicantRoute path="/applicant/getstarted" component={Getstarted} />
+                <ApplicantRoute path="/applicant/success" component={Thanksforsubmitingpc} />
+
+                <ApplicantRoute path="/applicant/view" component={Viewapplication} />
+                <ApplicantRoute exact path="/applicant/submitComplain/:id" component={Complain} />
 
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Registration} />
+                <Route path="/unauthorized" component={Unauthorized}/>
 
-                <Route exact path="/bo/dashboard" component={BOFirstPage}/>
-                <Route path="/profileBO" component={ProfileBO}/>
+                <BuildingOfficerRoute exact path="/bo/dashboard" component={BOFirstPage} />
+                <BuildingOfficerRoute path="/profileBO" component={ProfileBO} />
                 {/* <Route path="/user/login" component={Login} />
                 {/* <Route path="/user/login" component={Login} />
                 

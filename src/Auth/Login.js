@@ -34,14 +34,14 @@ class Login extends Component {
         password: this.state.password,
       })
       .then((response) => {
-        console.log(response.data)
         this.setState({ isLoading: false });
+      
         if (response.status === 200) {
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("isSubmitted", false);
           localStorage.setItem('token', response.data.token);
-          localStorage.setItem("user", response.data.user);
-          console.log(response.data.user.role);
+          localStorage.setItem("role", response.data.user.role);
+        
           this.setState({
             msg: response.data.message,
             redirect: true,
@@ -66,7 +66,6 @@ class Login extends Component {
   render() {
     const login = localStorage.getItem("isLoggedIn");
     if (login) {
-      console.log(this.state.role.name);
       if (this.state.redirect) {
         if (this.state.role == 'admin') {
           return <Redirect to="/admin" />;

@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import Header from './../Applicant/Header'
 class Firstpage extends Component {
     render() {
+        
         return (
             <div>
                 <Header />
