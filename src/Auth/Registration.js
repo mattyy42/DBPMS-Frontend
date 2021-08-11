@@ -118,7 +118,7 @@ class Registration extends Component {
                                     </div>
                                 </div>
                                 <div className="input-group mb-3">
-                                    <input type="text" className="form-control" name="phone_number" placeholder="Phone number" value={this.state.signupData.phone_number} onChange={this.onChangehandler}/>
+                                    <input type="tel" className="form-control" name="phone_number" placeholder="Phone number" value={this.state.signupData.phone_number} onChange={this.onChangehandler}/>
                                     <div className="input-group-append">
                                         <div className="input-group-text">
                                             <span className="fas fa-user" />
