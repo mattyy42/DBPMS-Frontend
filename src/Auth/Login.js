@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import {Link} from 'react-router-dom';
-  
+import { Link } from 'react-router-dom';
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class Login extends Component {
     data[name] = value;
     this.setState(data);
   };
-  
+
   onSignInHandler = (e) => {
     e.preventDefault();
     this.setState({ isLoading: true });
@@ -41,18 +41,18 @@ class Login extends Component {
           localStorage.setItem("isSubmitted", false);
           localStorage.setItem('token', response.data.token);
           localStorage.setItem("user", response.data.user);
-          console.log(localStorage.getItem('token'))
+         
           this.setState({
             msg: response.data.message,
             redirect: true,
             role: response.data.user.role,
           });
-          console.log(this.state)
+         
         }
         if (
           response.data.status === "failed" &&
           response.data.success === undefined
-          
+
         ) {
           this.setState({
             errMsgEmail: response.data.validation_error.email,
@@ -87,8 +87,8 @@ class Login extends Component {
         if (this.state.role.name == 'applicant') {
           return <Redirect to="/applicant" />;
         }
-        if(this.state.role == 'BO'){
-          return <Redirect to="/bo/dashboard"/>
+        if (this.state.role == 'BO') {
+          return <Redirect to="/bo/dashboard" />
         }
       }
     }
@@ -143,7 +143,7 @@ class Login extends Component {
                 <a href="forgot-password.html">I forgot my password</a>
               </p>
               <p className="mb-0">
-               <Link to="/register" > <a className="text-center">Register as New Applicant</a></Link>
+                <Link to="/register" > <a className="text-center">Register as New Applicant</a></Link>
               </p>
             </div>
             {/* /.login-card-body */}

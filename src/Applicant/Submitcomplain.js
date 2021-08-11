@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from './Header'
 import axios from 'axios';
 import Sidebar from './Sidebar'
-
+import { Link } from 'react-router-dom';
 export default class Submitcomplain extends Component {constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +70,7 @@ render() {
                                             <td >{application.bureau}</td>
                                             <td >{application.appointment.appointment_time}</td>
                                             <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
-                                            <td ><button type="button" class="btn btn-block btn-outline-warning btn-xs">Complain</button></td>
+                                            <td ><Link to={`/applicant/submitComplain/${application.id}`}><button type="button" class="btn btn-block btn-outline-warning btn-xs">Complain</button></Link></td>
                                             <td ><button type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</button></td>
                                         </tr>
                                     )}

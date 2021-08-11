@@ -27,6 +27,7 @@ import ProfileBO from './BO/ProfileBO';
 import EditBureau from './admin/Bureau/EditBureau';
 import Thanksforsubmitingpc from './Applicant/Thanksforsubmitingpc';
 import Submitcomplain from './Applicant/Submitcomplain';
+import Complain from './Applicant/Complain';
 function Routes() {
     return (
         <>
@@ -57,7 +58,8 @@ function Routes() {
                 <Route path="/applicant/success" component={Thanksforsubmitingpc} />
                 
                 <Route path="/applicant/view" component={Viewapplication} />
-                
+                <Route exact path="/applicant/submitComplain/:id" component={Complain}/>
+
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Registration} />
 

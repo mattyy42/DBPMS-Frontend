@@ -23,7 +23,7 @@ class EditBureau extends Component {
                 this.setState({
                     Data: {
                         ...this.state.Data,
-                        id:response.data.data.id,
+                        id:response.data.data.id,   
                         Bureau: response.data.data.bureau,
                         subcity: response.data.data.subcity,
                     }
