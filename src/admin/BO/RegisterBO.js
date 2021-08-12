@@ -3,11 +3,7 @@ import Header from '../../Applicant/Header'
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import Sidebar from '../Sidebar'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
-const MySwal = withReactContent(Swal)
-
+import Swal from 'sweetalert2';
 
 class RegisterBO extends Component {
     constructor(props) {
@@ -20,13 +16,20 @@ class RegisterBO extends Component {
                 password: "",
                 phone_number: "",
                 bureau: "",
-                role: "",
+                role: "BO",
                 isLoading: "",
             },
             msg: "",
             allBureau: []
         };
     }
+    HandleClick() {  
+        Swal.fire({  
+          title: 'Success',  
+          type: 'success',  
+          text: 'successfuly Registered Building officer ,We will inform the user to know soon',  
+        });  
+      }
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/getAllBureau').then(
             (response) => {
@@ -48,18 +51,8 @@ class RegisterBO extends Component {
             .post("http://localhost:8000/api/admin/registerBuildingOfficer", this.state.signupData)
             .then((response) => {
                 this.setState({ isLoading: false });
-                if (response.status === 200) {
-                    MySwal.fire({
-                        title: <p>Hello World</p>,
-                        footer: 'Copyright 2018',
-                        didOpen: () => {
-                          // `MySwal` is a subclass of `Swal`
-                          //   with all the same instance & static methods
-                          MySwal.clickConfirm()
-                        }
-                      }).then(() => {
-                        return MySwal.fire(<p>Shorthand works too</p>)
-                      })
+                if (response.status === 201) {
+                  this.HandleClick();
                     this.setState({
                         msg: response.message,
                         signupData: {
@@ -147,17 +140,20 @@ class RegisterBO extends Component {
                                                     <label htmlFor="exampleInputPassword1">Password</label>
                                                     <input type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={this.state.signupData.password} onChange={this.onChangehandler} />
                                                 </div>
-                                                <div className="form-group">
+                                                {/* <div className="form-group">
                                                     <label htmlFor="roleInput">Role</label>
                                                     <select name="role" onChange={this.onChangehandler} className="custom-select">
                                                         <option value="">Select Role</option>
                                                         <option value="BO">Building Officer</option>
                                                     </select>
-                                                </div>
+                                                </div> */}
+                                                <dive className="form-group">
+                                                    <input type="hidden" name="role" value="BO" />
+                                                </dive>
                                                 <div className="form-group">
                                                     <label htmlFor="bureau">Bureau</label>
                                                     <select name="bureau" onChange={this.onChangehandler} className="custom-select">
-                                                        <option value="">Select Role</option>
+                                                        <option value="">Select Bureau</option>
                                                         {this.state.allBureau.map((bureau) => (
 
                                                             <option value={bureau.subcity}>{bureau.subcity}</option>

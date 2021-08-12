@@ -3,6 +3,7 @@ import Sidebar from '../Sidebar'
 import Header from '../../Applicant/Header'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 class ShowTableBO extends Component {
     constructor(props) {
         super(props);
@@ -10,6 +11,13 @@ class ShowTableBO extends Component {
             buildingOfficers: [],
         }
     }
+    HandleClick() {  
+        Swal.fire({  
+          title: 'Success',  
+          type: 'success',  
+          text: 'successfully Deleted',  
+        });  
+      }
     componentDidMount() {
         const tokenString = localStorage.getItem('token');
         axios
@@ -29,7 +37,8 @@ class ShowTableBO extends Component {
     }
     removeData = async id =>{
         await axios
-          .delete(`http://localhost:8000/api/admin/deleteBuildingOfficer/${id}`)
+          .delete(`http://localhost:8000/api/admin/deleteBuildingOfficer/${id}`);
+          this.HandleClick();
           this.setState((prev) => ({
             buildingOfficers: prev.buildingOfficers.filter(
               (buildingOfficer) => buildingOfficer.id !== id

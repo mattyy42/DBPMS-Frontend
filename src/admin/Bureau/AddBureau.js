@@ -3,6 +3,7 @@ import Header from '../../Applicant/Header'
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import Sidebar from '../Sidebar'
+import Swal from 'sweetalert2';
 class AddBureau extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +16,13 @@ class AddBureau extends Component {
             msg: "",
         };
     }
+    HandleClick() {  
+        Swal.fire({  
+          title: 'Success',  
+          type: 'success',  
+          text: 'successfuly Added new Bureau ',  
+        });  
+      }
     onChangehandler = (e, key) => {
         const { signupData } = this.state;
         signupData[e.target.name] = e.target.value;
@@ -27,7 +35,8 @@ class AddBureau extends Component {
             .post("http://localhost:8000/api/addBureau", this.state.signupData)
             .then((response) => {
                 this.setState({ isLoading: false });
-                if (response.status === 200) {
+                if (response.status === 201) {
+                    this.HandleClick();
                     this.setState({
                         msg: response.message,
                         signupData: {

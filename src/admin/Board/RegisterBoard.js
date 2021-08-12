@@ -3,6 +3,7 @@ import Header from '../../Applicant/Header'
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import Sidebar from '../Sidebar'
+import Swal from 'sweetalert2';
 class RegisterBoard extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +22,13 @@ class RegisterBoard extends Component {
             allBureau: []
         };
     }
+    HandleClick() {  
+        Swal.fire({  
+          title: 'Success',  
+          type: 'success',  
+          text: 'successfuly Registered Board of appliance ,We will inform the user to know soon',  
+        });  
+      }
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/getAllBureau').then(
             (response) => {
@@ -42,7 +50,8 @@ class RegisterBoard extends Component {
             .post("http://localhost:8000/api/admin/registerBoardOfApplicance", this.state.signupData)
             .then((response) => {
                 this.setState({ isLoading: false });
-                if (response.status === 200) {
+                if (response.status === 201) {
+                    this.HandleClick();
                     this.setState({
                         msg: response.message,
                         signupData: {

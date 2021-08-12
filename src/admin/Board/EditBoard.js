@@ -3,6 +3,7 @@ import Header from '../../Applicant/Header'
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import Sidebar from '../Sidebar'
+import Swal from 'sweetalert2';
 class EditBoard extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +22,13 @@ class EditBoard extends Component {
             allBureau: []
         };
     }
+    HandleClick() {  
+        Swal.fire({  
+          title: 'Success',  
+          type: 'success',  
+          text: 'successfully Edited ',  
+        });  
+      }
     componentDidMount() {
         const { id } = this.props.match.params;
         axios.get(`http://127.0.0.1:8000/api/admin/getUserById/${id}`).then(
@@ -61,6 +69,7 @@ class EditBoard extends Component {
             .then((response) => {
                 this.setState({ isLoading: false });
                 if (response.status === 200) {
+                    this.HandleClick()
                     this.setState({
                         msg: response.message,
                         signupData: {
@@ -74,11 +83,7 @@ class EditBoard extends Component {
                         },
                     });
 
-                    // MySwal.fire(
-                    //     'Good job!',
-                    //     'You clicked the button!',
-                    //     'success'
-                    //   )
+                    
                     setTimeout(() => {
                         this.setState({ msg: "" });
                     }, 2000);
