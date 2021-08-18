@@ -3,6 +3,7 @@ import Sidebar from '../Sidebar'
 import Header from '../../Applicant/Header'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 class ManageBureaus extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +12,13 @@ class ManageBureaus extends Component {
             isLoading: "",
         }
     }
+    HandleClick() {  
+        Swal.fire({  
+          title: 'Success',  
+          type: 'success',  
+          text: 'successfully Deleted',  
+        });  
+      }
     componentDidMount() {
         const tokenString = localStorage.getItem('token');
         axios.get('http://127.0.0.1:8000/api/getAllBureau').then(
@@ -24,7 +32,8 @@ class ManageBureaus extends Component {
     }
     removeData = async id => {
         await axios
-            .delete(`http://localhost:8000/api/deleteBureau/${id}`)
+            .delete(`http://localhost:8000/api/deleteBureau/${id}`);
+        this.HandleClick()
         this.setState((prev) => ({
             bureaus: prev.bureaus.filter(
                 (bureau) => bureau.id !== id
