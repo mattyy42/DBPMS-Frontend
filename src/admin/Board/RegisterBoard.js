@@ -15,7 +15,7 @@ class RegisterBoard extends Component {
                 password: "",
                 phone_number: "",
                 bureau: "",
-                role: "",
+                role: "BA",
                 isLoading: "",
             },
             msg: "",
@@ -144,17 +144,17 @@ class RegisterBoard extends Component {
                                                     <label htmlFor="exampleInputPassword1">Password</label>
                                                     <input type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={this.state.signupData.password} onChange={this.onChangehandler} />
                                                 </div>
-                                                <div className="form-group">
+                                                {/* <div className="form-group">
                                                     <label htmlFor="roleInput">Role</label>
                                                     <select name="role" onChange={this.onChangehandler} className="custom-select">
                                                         <option value="">Select Role</option>
                                                         <option value="BA">Board of appliance</option>
                                                     </select>
-                                                </div>
+                                                </div> */}
                                                 <div className="form-group">
                                                     <label htmlFor="bureau">Bureau</label>
                                                     <select name="bureau" onChange={this.onChangehandler} className="custom-select">
-                                                        <option value="">Select Role</option>
+                                                        <option value="">Select Bureau</option>
                                                         {this.state.allBureau.map((bureau) => (
 
                                                             <option value={bureau.subcity}>{bureau.subcity}</option>
