@@ -19,17 +19,8 @@ class Login extends Component {
     };
   }
   componentDidMount(){
-    Pusher.logToConsole = true;
     
-    var pusher = new Pusher('7a65c022ee630f4f8f2c', {
-      cluster: 'ap2',
-      forceTLS: true
-    });
-
-    var channel = pusher.subscribe('channel-name');
-    channel.bind('ApplicationAssignedEvenet', function(data) {
-      alert(JSON.stringify(data))
-    });
+    
   }
   onChangehandler = (e) => {
     let name = e.target.name;

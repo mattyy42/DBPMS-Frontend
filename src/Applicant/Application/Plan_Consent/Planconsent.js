@@ -96,7 +96,6 @@ export default class Planconsent extends Component {
           }
         })
       .then((response) => {
-        console.log(response.data)
         this.setState({ isLoading: false })
         // console.log('status2 ',response.status)
         if (response.status === 201) {
@@ -128,7 +127,19 @@ export default class Planconsent extends Component {
               mobile_number: "",
               TIN_number: "",
             },
-          });
+          }).catch((err) =>{
+            console.log(err);
+            //handle error
+            if (
+              err.response.status === 401) {
+              this.setState({
+               // errMsg: errresponse.data.error,
+               isLoading:false,
+                isShowError: true,
+              });
+    
+            }
+        });
           
          
           
