@@ -10,27 +10,27 @@ class EditBO extends Component {
         super(props);
         this.state = {
             signupData: {
-                id:"",
+                id: "",
                 first_name: "",
                 last_name: "",
                 email: "",
                 password: "",
                 phone_number: "",
                 bureau: "",
-                role: "",
+                role: "BO",
                 isLoading: "",
             },
             msg: "",
             allBureau: []
         };
     }
-    HandleClick() {  
-        Swal.fire({  
-          title: 'Success',  
-          type: 'success',  
-          text: 'successfully Edited ',  
-        });  
-      }
+    HandleClick() {
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfully Edited ',
+        });
+    }
     componentDidMount() {
         const { id } = this.props.match.params;
         axios.get(`http://127.0.0.1:8000/api/admin/getUserById/${id}`).then(
@@ -38,7 +38,7 @@ class EditBO extends Component {
                 this.setState({
                     signupData: {
                         ...this.state.signupData,
-                        id:response.data.data.id,
+                        id: response.data.data.id,
                         first_name: response.data.data.first_name,
                         last_name: response.data.data.last_name,
                         email: response.data.data.email,
@@ -161,13 +161,13 @@ class EditBO extends Component {
                                                     <label htmlFor="exampleInputPassword1">Password</label>
                                                     <input type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={this.state.signupData.password} onChange={this.onChangehandler} />
                                                 </div>
-                                                <div className="form-group">
+                                                {/* <div className="form-group">
                                                     <label htmlFor="roleInput">Role</label>
                                                     <select name="role" onChange={this.onChangehandler} className="custom-select">
                                                         <option value="">Select Role</option>
                                                         <option value="BO">Building Officer</option>
                                                     </select>
-                                                </div>
+                                                </div> */}
                                                 <div className="form-group">
                                                     <label htmlFor="bureau">Bureau</label>
                                                     <select name="bureau" onChange={this.onChangehandler} className="custom-select">
