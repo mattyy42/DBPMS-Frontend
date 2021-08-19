@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import Sidebar from './Sidebar'
+import Header from './Header'
 class Complain extends Component {
    constructor(props){
     super(props);
@@ -17,7 +19,8 @@ class Complain extends Component {
     render() {
         return (
             <div>
-                application:{this.state.id}
+                <Header/>
+                <Sidebar/>
             </div>
         )
     }

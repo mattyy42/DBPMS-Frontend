@@ -75,7 +75,7 @@ export default class Submitcomplain extends Component {
                                                     <td key={index}>{application.id}</td>
                                                     <td >{application.buildingOfficer.first_name}</td>
                                                     <td >{application.bureau}</td>
-                                                    <td >{application.appointment.appointment_time}</td>
+                                                    <td >{application.appointment_time}</td>
                                                     <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs" onClick={this.HandleClick}>Details</button></td>
                                                     <td ><button type="button" class="btn btn-block btn-outline-warning btn-xs">Complain</button></td>
                                                     <td ><button type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</button></td>

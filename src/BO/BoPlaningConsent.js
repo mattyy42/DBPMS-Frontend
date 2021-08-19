@@ -3,6 +3,7 @@ import SideBar from './SideBar'
 import Header from '../Applicant/Header'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 class BoPlaningConsent extends Component {
     constructor(props) {
         super(props);
@@ -10,10 +11,17 @@ class BoPlaningConsent extends Component {
             planingConsents: [],
         }
     }
+    HandleClick() {  
+        Swal.fire({  
+          title: 'Success',  
+          type: 'success',  
+          text: 'successfully Approved',  
+        });  
+      }
     componentDidMount() {
         const tokenString = localStorage.getItem('token');
         axios
-            .get("http://localhost:8000/api/bo/viewPc",
+            .get("http://localhost:8000/api/bo/pc",
                 { headers: { authorization: `Bearer ${tokenString}` } })
             .then((response) => {
                 if (response.massage == "unauthenticated") {
@@ -28,6 +36,26 @@ class BoPlaningConsent extends Component {
             })
 
     }
+    acceptPC = async id =>{
+        const tokenString = localStorage.getItem('token');
+        await axios
+          .get(`http://localhost:8000/api/bo/acceptPc/${id}`,
+          { headers: { authorization: `Bearer ${tokenString}` } });
+          this.HandleClick(); 
+        window.location.reload();
+      };
+      rejectPc= async id => {
+        const tokenString = localStorage.getItem('token');
+        await axios
+          .get(`http://localhost:8000/api/bo/rejectPc/${id}`,
+          { headers: { authorization: `Bearer ${tokenString}` } });
+          Swal.fire({  
+            title: 'Success',  
+            type: 'success',  
+            text: 'successfully Rejected',  
+          });
+          window.location.reload(); 
+      }
     render() {
         const { planingConsents } = this.state;
         return (
@@ -130,8 +158,8 @@ class BoPlaningConsent extends Component {
                                         <table className="table m-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Application ID</th>
-                                                    <th>Building Officer Name</th>
+                                                    <th>Planning ID</th>
+                                                    <th>Applicant Name</th>
                                                     <th>Bureau</th>
                                                     <th>Status</th>
                                                     <th>Details</th>
@@ -142,13 +170,13 @@ class BoPlaningConsent extends Component {
                                                 {planingConsents.map((planingConsent, index) =>
                                                     <tr>
                                                         <td key={index}>{planingConsent.id}</td>
-                                                        <td >{planingConsent.buildingOfficer.first_name}</td>
+                                                        <td >{planingConsent.applicant.first_name}</td>
                                                         <td >{planingConsent.bureau}</td>
                                                         <td >{planingConsent.status === 0 ? "Panding" : "Approved"}</td>
                                                         <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
                                                         {planingConsent.status === 0 ?
-                                                        <td ><Link to={``}><button class="btn btn-block btn-outline-warning btn-xs">Accept</button></Link></td>:
-                                                        <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
+                                                        <td ><button onClick={this.acceptPC.bind(this,planingConsent.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>:
+                                                        <td ><button onClick={this.rejectPc.bind(this,planingConsent.id)} class="btn btn-block btn-outline-danger btn-xs">Reject</button></td>
                                                         }
                                                         
 

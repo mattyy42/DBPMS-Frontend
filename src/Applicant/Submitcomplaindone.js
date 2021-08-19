@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Submitcomplaindone extends Component {
+class Submitcomplaindone extends Component {
     render() {
         return (
             <div>
@@ -9,3 +9,4 @@ export default class Submitcomplaindone extends Component {
         )
     }
 }
+export default Submitcomplaindone;
