@@ -74,6 +74,14 @@ class Sidebar extends Component {
                                                 </a>
                                             </li>
                                         </Link>
+                                        <Link to="/applicant/viewPc">
+                                            <li className="nav-item">
+                                                <a className="nav-link">
+                                                    <i className="far fa-circle nav-icon" />
+                                                    <p>View My Planning Consent</p>
+                                                </a>
+                                            </li>
+                                        </Link>
                                         <Link to="/applicant/view">
                                             <li className="nav-item">
                                                 <a className="nav-link">

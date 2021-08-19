@@ -71,7 +71,7 @@ class Dashboard extends Component {
                             {applicationDatas.map((application) =>
                               <tr>
                                 <th>{application.applicant.first_name}</th>
-                                <th>{application.appointment.appointment_time}</th>
+                                 {/* <th>{application.appointment.appointment_time}</th> */}
                                 <th>30%</th>
                                 <th>pending</th>
                                 <td>

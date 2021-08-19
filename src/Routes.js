@@ -15,7 +15,8 @@ import Firstpage from './admin/Firstpage';
 import BOFirstPage from './BO/BOFirstPage';
 import RegisterBO from './admin/BO/RegisterBO';
 import ShowTableBO from './admin/BO/ShowTableBO';
-import Applicationform from "./Applicant/Applicationform"
+import Applicationform from "./Applicant/Applicationform";
+import ViewPlanningConsent from "./Applicant/ViewPlanningConsent";
 import RegisterBoard from './admin/Board/RegisterBoard';
 import Viewapplication from './Applicant/Viewapplication';
 import Getstarted from './Applicant/Getstarted';
@@ -25,6 +26,7 @@ import EditBoard from './admin/Board/EditBoard';
 import ManageBureaus from './admin/Bureau/ManageBureaus';
 import AddBureau from './admin/Bureau/AddBureau';
 import ProfileBO from './BO/ProfileBO';
+import BoPlaningConsent from './BO/BoPlaningConsent'
 import EditBureau from './admin/Bureau/EditBureau';
 import Thanksforsubmitingpc from './Applicant/Thanksforsubmitingpc';
 import Submitcomplain from './Applicant/Submitcomplain';
@@ -45,7 +47,7 @@ function Routes() {
                 {/* <Route path="/home" component={Home} /> */}
 
                 {/* Admin Route */}
-            
+
                 <AdminRoute exact path="/admin" component={Firstpage} />
                 <AdminRoute exact path="/admin/registerBO" component={RegisterBO} />
                 <AdminRoute exact path="/admin/officer" component={ShowTableBO} />
@@ -56,15 +58,16 @@ function Routes() {
                 <AdminRoute exact path="/admin/bordEdit/:id" component={EditBoard} />
                 <AdminRoute exact path="/admin/manageBureau" component={ManageBureaus} />
                 <AdminRoute exact path="/admin/bureauAdd" component={AddBureau} />
-                <AdminRoute exact path="/admin/bureauEdit/:id" component={EditBureau} />) 
-        
+                <AdminRoute exact path="/admin/bureauEdit/:id" component={EditBureau} />)
+
 
                 <ApplicantRoute exact path="/applicant" component={Fullpage} />
                 <ApplicantRoute path="/applicant/apply" component={Startapplication} />
                 <ApplicantRoute path="/applicant/complain" component={Submitcomplain} />
                 <ApplicantRoute path="/applicant/getstarted" component={Getstarted} />
                 <ApplicantRoute path="/applicant/success" component={Thanksforsubmitingpc} />
-                <ApplicantRoute path="/applicant/a" component={Applicationform} />
+                <ApplicantRoute path="/applicant/application" component={Applicationform} />
+                <ApplicantRoute exact path="/applicant/viewPc" component={ViewPlanningConsent} />
 
 
 
@@ -73,13 +76,11 @@ function Routes() {
 
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Registration} />
-                <Route path="/unauthorized" component={Unauthorized}/>
+                <Route path="/unauthorized" component={Unauthorized} />
 
                 <BuildingOfficerRoute exact path="/bo/dashboard" component={BOFirstPage} />
                 <BuildingOfficerRoute path="/profileBO" component={ProfileBO} />
-                {/* <Route path="/user/login" component={Login} />
-                {/* <Route path="/user/login" component={Login} />
-                
+                <BuildingOfficerRoute path="/bo/planingConsent" component={BoPlaningConsent} />
                 {/*Redirect if not authenticated */}
                 {/* <Guard path="/user" token="user-token" routeRedirect="/user/login" component={PrivateRoute} />  */}
             </Switch>
