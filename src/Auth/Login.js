@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from 'react-router-dom';
-
+import Pusher from 'pusher-js';
+import Echo from 'laravel-echo';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,19 @@ class Login extends Component {
       isShowError: false,
       errMsg: "",
     };
+  }
+  componentDidMount(){
+    Pusher.logToConsole = true;
+    
+    var pusher = new Pusher('7a65c022ee630f4f8f2c', {
+      cluster: 'ap2',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('channel-name');
+    channel.bind('ApplicationAssignedEvenet', function(data) {
+      alert(JSON.stringify(data))
+    });
   }
   onChangehandler = (e) => {
     let name = e.target.name;
@@ -78,6 +92,7 @@ class Login extends Component {
         }
       }
     }
+    
     const isLoading = this.state.isLoading;
     const isShowError=this.state.isShowError;
     return (
