@@ -15,6 +15,7 @@ import Firstpage from './admin/Firstpage';
 import BOFirstPage from './BO/BOFirstPage';
 import RegisterBO from './admin/BO/RegisterBO';
 import ShowTableBO from './admin/BO/ShowTableBO';
+import Applicationform from "./Applicant/Applicationform"
 import RegisterBoard from './admin/Board/RegisterBoard';
 import Viewapplication from './Applicant/Viewapplication';
 import Getstarted from './Applicant/Getstarted';
@@ -63,6 +64,9 @@ function Routes() {
                 <ApplicantRoute path="/applicant/complain" component={Submitcomplain} />
                 <ApplicantRoute path="/applicant/getstarted" component={Getstarted} />
                 <ApplicantRoute path="/applicant/success" component={Thanksforsubmitingpc} />
+                <ApplicantRoute path="/applicant/a" component={Applicationform} />
+
+
 
                 <ApplicantRoute path="/applicant/view" component={Viewapplication} />
                 <ApplicantRoute exact path="/applicant/submitComplain/:id" component={Complain} />

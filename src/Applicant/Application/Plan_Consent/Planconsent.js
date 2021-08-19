@@ -6,8 +6,8 @@ export default class Planconsent extends Component {
 
   userData;
   constructor(props) {
-    
-    
+
+
     super(props);
     this.HandleClick = this.HandleClick.bind(this);
     this.state = {
@@ -25,7 +25,7 @@ export default class Planconsent extends Component {
         name_stated_on_ownership_authentication: "",
         previous_service: "",
         type_of_construction: "",
-        
+
         application_issued_date: "",
         ground_floor_number: "",
         owner_full_name: "",
@@ -35,47 +35,47 @@ export default class Planconsent extends Component {
         TIN_number: "",
         isLoading: "",
       },
-      
-      
+
+
     };
   }
-  HandleClick() {  
-    Swal.fire({  
-      title: 'Success',  
-      type: 'success',  
-      text: 'successfuly applied for plan consent',  
-    });  
+  HandleClick() {
+    Swal.fire({
+      title: 'Success',
+      type: 'success',
+      text: 'successfuly applied for plan consent',
+    });
   }
 
-  HandleClickAutoclose() {  
-    let timerInterval  
-    Swal.fire({  
-      title: 'Auto close alert!',  
-      html: 'I will close in <b></b> milliseconds.',  
-      timer: 1000,  
-      timerProgressBar: true,  
-      onBeforeOpen: () => {  
-        Swal.showLoading()  
-        timerInterval = setInterval(() => {  
-          const content = Swal.getContent()  
-          if (content) {  
-            const b = content.querySelector('b')  
-            if (b) {  
-              b.textContent = Swal.getTimerLeft()  
-            }  
-          }  
-        }, 100)  
-      },  
-      onClose: () => {  
-        clearInterval(timerInterval)  
-      }  
-    }).then((result) => {  
-      if (result.dismiss === Swal.DismissReason.timer) {  
-        console.log('I was closed by the timer')  
-      }  
-    })  
-  }  
-  
+  HandleClickAutoclose() {
+    let timerInterval
+    Swal.fire({
+      title: 'Auto close alert!',
+      html: 'I will close in <b></b> milliseconds.',
+      timer: 1000,
+      timerProgressBar: true,
+      onBeforeOpen: () => {
+        Swal.showLoading()
+        timerInterval = setInterval(() => {
+          const content = Swal.getContent()
+          if (content) {
+            const b = content.querySelector('b')
+            if (b) {
+              b.textContent = Swal.getTimerLeft()
+            }
+          }
+        }, 100)
+      },
+      onClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
+  }
+
   onChangehandler = (e, key) => {
     const { signupData } = this.state;
     signupData[e.target.name] = e.target.value;
@@ -101,8 +101,8 @@ export default class Planconsent extends Component {
         if (response.status === 201) {
           localStorage.setItem('isSubmitted', true);
           this.HandleClick();
-         
-          console.log('status ',response.status);
+
+          console.log('status ', response.status);
           this.setState({
             msg: response.data.message,
             redirect: true,
@@ -127,46 +127,41 @@ export default class Planconsent extends Component {
               mobile_number: "",
               TIN_number: "",
             },
-          }).catch((err) =>{
-            console.log(err);
-            //handle error
-            if (
-              err.response.status === 401) {
-              this.setState({
-               // errMsg: errresponse.data.error,
-               isLoading:false,
-                isShowError: true,
-              });
-    
-            }
-        });
-          
-         
-          
-          setTimeout(() => {
-            this.setState({ msg: "" });
-          }, 2000);
-        }
-       
+          })
 
-        if (response.data.status === "failed") {
-          this.setState({ msg: response.data.message });
+
+
           setTimeout(() => {
             this.setState({ msg: "" });
           }, 2000);
         }
-      });
-      // function sub(params) {
-      //   this.HandleClick();
-      //   this.onSubmitHandler();
-      // }
+
+
+
+      }).catch((err) => {
+        console.log(err);
+        //handle error
+        if (
+          err.response.status === 401) {
+          this.setState({
+            // errMsg: errresponse.data.error,
+            isLoading: false,
+            isShowError: true,
+          });
+
+        }
+      });;
+    // function sub(params) {
+    //   this.HandleClick();
+    //   this.onSubmitHandler();
+    // }
   };
-  
+
 
   render() {
     const isLoading = this.state.isLoading;
     const submitted = localStorage.getItem('isSubmitted');
-    console.log(submitted) 
+    console.log(submitted)
     if (submitted) {
       if (this.state.redirect) {
         return <Redirect to="/applicant/success" />;
@@ -196,7 +191,7 @@ export default class Planconsent extends Component {
                 determines whether the business will apply at the federal level or sub-city level.</p>
             </div>
           </div>
-          <form  onSubmit={this.onSubmitHandler}> 
+          <form onSubmit={this.onSubmitHandler}>
             <div className="row">
 
               <div className="col-md">
@@ -325,7 +320,7 @@ export default class Planconsent extends Component {
                 {/* /.card */}
               </div>
             </div> <div className="card-footer">
-            
+
               <button type="submit" class="btn btn-primary" >Submit
                 {isLoading ? (
                   <span
@@ -334,8 +329,8 @@ export default class Planconsent extends Component {
                     aria-hidden="true"
                   ></span>
                 ) : (
-                  <span></span>
-                )}
+                    <span></span>
+                  )}
               </button>
             </div>
           </form></section>
