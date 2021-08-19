@@ -35,6 +35,7 @@ import ApplicantRoute from './ApplicantRoute';
 import BuildingOfficerRoute from './BuildingOfficerRoute';
 import AdminRoute from './AdminRoute';
 import Unauthorized from './Unauthorized';
+import ShowComplain from './Applicant/complain/ShowComplain';
 function Routes() {
     const role = localStorage.getItem("role");
     return (
@@ -68,7 +69,7 @@ function Routes() {
                 <ApplicantRoute path="/applicant/success" component={Thanksforsubmitingpc} />
                 <ApplicantRoute path="/applicant/application" component={Applicationform} />
                 <ApplicantRoute exact path="/applicant/viewPc" component={ViewPlanningConsent} />
-
+                <ApplicantRoute exact path="/applicant/viewComplain" component={ShowComplain}/>
 
 
                 <ApplicantRoute path="/applicant/view" component={Viewapplication} />

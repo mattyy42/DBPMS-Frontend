@@ -85,7 +85,7 @@ class RegisterBO extends Component {
     };
     render() {
         return (
-            <div>a
+            <div>
                 <Header />
                 <Sidebar />
                 <div className="content-wrapper">

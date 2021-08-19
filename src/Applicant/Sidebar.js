@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 class Sidebar extends Component {
 
     constructor(props) {
-         super(props);
-         this.state = {
+        super(props);
+        this.state = {
 
             first_name: "",
             last_name: "",
@@ -17,30 +17,28 @@ class Sidebar extends Component {
             phone_number: "",
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         const tokenString = localStorage.getItem('token');
         axios
-        .get("http://localhost:8000/api/user",
-            { headers: { authorization: `Bearer ${tokenString}` } })
-        .then((response) => {
-         
+            .get("http://localhost:8000/api/user",
+                { headers: { authorization: `Bearer ${tokenString}` } })
+            .then((response) => {
 
-            if (response.massage == "unauthenticated") {
-                
-            }
-            this.setState({
 
-                first_name: response.data.first_name,
-                last_name: response.data.last_name,
-                // building_officer: response.data.buildingOfficer,
+                if (response.massage == "unauthenticated") {
+
+                }
+                this.setState({
+
+                    first_name: response.data.first_name,
+                    last_name: response.data.last_name,
+                    // building_officer: response.data.buildingOfficer,
+                })
+
             })
 
-        })
-    
     }
     render() {
-        console.log(this.state.first_name)
-
         return (
             <div>
                 <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -117,7 +115,7 @@ class Sidebar extends Component {
                                                 </a>
                                             </li>
                                         </Link>
-                                        <Link to="/applicant/apply">
+                                        <Link to="/applicant/viewComplain">
                                             <li className="nav-item">
                                                 <a className="nav-link">
                                                     <i className="far fa-circle nav-icon" />
