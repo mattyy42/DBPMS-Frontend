@@ -7,6 +7,9 @@ class ViewPlanningConsent extends Component {
         super(props);
         this.state = {
             planingConsents: [],
+            rejected: [],
+            accepted:[],
+            pend:[]
         }
     }
     componentDidMount() {
@@ -21,14 +24,15 @@ class ViewPlanningConsent extends Component {
                 console.log(response.data.data);
                 this.setState({
                     planingConsents: response.data.data,
-                    // building_officer: response.data.buildingOfficer,
+                    rejected:response.data.data.filter(data=>data.status===2),
+                    accepted:response.data.data.filter(data=>data.status===1),
+                    pend:response.data.data.filter(data=>data.status===0),
                 })
-
             })
 
     }
     render() {
-        const { planingConsents } = this.state;
+        const { planingConsents,rejected,accepted,pend } = this.state;
         return (
             <div>
                 <Header />
@@ -62,8 +66,8 @@ class ViewPlanningConsent extends Component {
                                         <div className="info-box-content">
                                             <span className="info-box-text">Applications</span>
                                             <span className="info-box-number">
-                                                10
-                        <small> Total</small>
+                                                {planingConsents.length}
+                                                <small> Total</small>
                                             </span>
                                         </div>
                                         {/* /.info-box-content */}
@@ -76,8 +80,10 @@ class ViewPlanningConsent extends Component {
                                         <span className="info-box-icon bg-danger elevation-1"><i className="fas fa-ban" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Rejected</span> <span className="info-box-number">
-                                                10
-                        <small> Total</small>
+                                                {
+                                                    rejected.length
+                                                }
+                                                <small> Total</small>
                                             </span>
                                         </div>
                                         {/* /.info-box-content */}
@@ -92,7 +98,7 @@ class ViewPlanningConsent extends Component {
                                         <span className="info-box-icon bg-success elevation-1"><i className="fas fa-thumbs-up" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Accepted</span>
-                                            <span className="info-box-number">760</span>
+                                            <span className="info-box-number">{accepted.length}</span>
                                         </div>
                                         {/* /.info-box-content */}
                                     </div>
@@ -102,7 +108,7 @@ class ViewPlanningConsent extends Component {
                                         <span className="info-box-icon bg-warning elevation-1"><i className="fa fa-exclamation" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Pending</span>
-                                            <span className="info-box-number">2,000</span>
+                                            <span className="info-box-number">{pend.length}</span>
                                         </div>
                                         {/* /.info-box-content */}
                                     </div>
@@ -113,7 +119,7 @@ class ViewPlanningConsent extends Component {
 
                             <div className="card">
                                 <div className="card-header border-transparent">
-                                    <h3 className="card-title">My Applications</h3>
+                                    <h3 className="card-title">My Planing Consent</h3>
                                     <div className="card-tools">
                                         <button type="button" className="btn btn-tool" data-card-widget="collapse">
                                             <i className="fas fa-minus" />
@@ -129,10 +135,11 @@ class ViewPlanningConsent extends Component {
                                         <table className="table m-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Application ID</th>
+                                                    <th>Planing ID</th>
                                                     <th>Building Officer Name</th>
                                                     <th>Bureau</th>
                                                     <th>Status</th>
+                                                    <th>Start Application</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -142,7 +149,9 @@ class ViewPlanningConsent extends Component {
                                                         <td >{planingConsent.buildingOfficer.first_name}</td>
                                                         <td >{planingConsent.bureau}</td>
                                                         <td >{planingConsent.status === 0 ? "Panding" : "Approved"}</td>
-                                                        {/* <td >{application.appointment.appointment_time}</td> */}
+                                                        {planingConsent.status === 1 ?
+                                                            <td ><a type="button" href="/applicant/application" className="btn btn-primary">start</a></td> : <td><button disabled className="btn btn-primary">start</button></td>
+                                                        }
                                                     </tr>
                                                 )}
                                             </tbody>

@@ -184,7 +184,7 @@ export default class Applicationform extends Component {
                 </div>{/* /.row */}
               </div>{/* /.container-fluid */}
               <div className="col-sm">
-                <h5 className="m-0">Application Process Phase 1 Plan Consent</h5>
+                <h5 className="m-0">Application Process Phase 2 submitting application form</h5>
                 <p>Building Permit Department will issue a planning consent if all requirements meet the master plan guidelines. The business representative is physically present for the duration of this step. If land is owned by the business, steps follow the standard application process. But, the construction permit for a leased land requires agreement between owner and business, in addition to all other documents. The scale and purpose of the building
                   determines whether the business will apply at the federal level or sub-city level.</p>
               </div>

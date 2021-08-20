@@ -41,7 +41,7 @@ class Complain extends Component {
             console.log(response.data);
             if (response.status === 200) {
                 Swal.fire({
-                    title: 'Faild',
+                    title: 'Failed',
                     type: 'success',
                     text: response.data.complain,
                 });
@@ -53,7 +53,7 @@ class Complain extends Component {
             //handle error
             if (err.response.status === 422) {
                 Swal.fire({
-                    title: 'Faild',
+                    title: 'Failed',
                     type: 'success',
                     text: err.response.data.errors.complain,
                 });
@@ -99,7 +99,7 @@ class Complain extends Component {
                                             <div className="card-body">
                                                 <div className="form-group">
                                                     <label htmlFor="firstInput">Enter your complain</label>
-                                                    <input type="text" name="complain" className="form-control" id="firstInput" placeholder="Enter Complain" value={this.state.complainData.complain} onChange={this.onChangehandler} />
+                                                    <textarea type="text" name="complain" className="form-control" id="firstInput" placeholder="Enter Complain" value={this.state.complainData.complain} onChange={this.onChangehandler} />
                                                 </div>
                                             </div>
                                             {/* /.card-body */}
