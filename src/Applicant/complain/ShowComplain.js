@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 class ShowComplain extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +27,29 @@ class ShowComplain extends Component {
         )
 
     }
+    removeData = async id => {
+        const tokenString = localStorage.getItem('token');
+        await axios
+            .get(`http://127.0.0.1:8000/api/applicant/deleteComplain/${id}`,
+                { headers: { authorization: `Bearer ${tokenString}` } }).then(
+                    (response) => {
+                        console.log(response.data)
+                        if (response.status === 200) {
+                            Swal.fire({
+                                title: 'Success',
+                                type: 'success',
+                                text: response.data.success,
+                            });
+                        }
+                    }
+                );
+
+        this.setState((prev) => ({
+            complains: prev.complains.filter(
+                (complain) => complain.id !== id
+            )
+        }));
+    };
     render() {
         const { complains } = this.state;
         return (
@@ -64,12 +87,12 @@ class ShowComplain extends Component {
                                     </thead>
                                     <tbody>
                                         {complains.map((Complain, index) =>
-                                            <tr>
-                                                <td key={Complain.id}>{Complain.complain}</td>
+                                            <tr key={index}>
+                                                <td >{Complain.complain}</td>
                                                 <td >{Complain.board.first_name}</td>
                                                 <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
-                                                {/* <td ><Link to={`/admin/ComplainEdit/${Complain.id}`}><button type="button" class="btn btn-block btn-outline-warning btn-xs">Edit</button></Link></td> */}
-                                                {/* <td ><button onClick={this.removeData.bind(this, Complain.id)} type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</button></td> */}
+                                                <td ><a href="`/applicant/editComlain/$`" type="button" class="btn btn-block btn-outline-warning btn-xs">Edit</a></td>
+                                                <td ><a onClick={this.removeData.bind(this, Complain.id)} type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</a></td>
                                             </tr>
                                         )}
                                     </tbody>

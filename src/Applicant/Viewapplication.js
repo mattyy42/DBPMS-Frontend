@@ -16,7 +16,7 @@ export default class Viewapplication extends Component {
             .get("http://localhost:8000/api/applicant/viewApplication",
                 { headers: { authorization: `Bearer ${tokenString}` } })
             .then((response) => {
-                if (response.massage == "unauthenticated") {
+                if (response.massage === "unauthenticated") {
                     console.log('hey');
                 }
                 this.setState({

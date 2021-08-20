@@ -20,7 +20,7 @@ class ManageBureaus extends Component {
         });  
       }
     componentDidMount() {
-        const tokenString = localStorage.getItem('token');
+       // const tokenString = localStorage.getItem('token');
         axios.get('http://127.0.0.1:8000/api/getAllBureau').then(
             (response) => {
                 this.setState({

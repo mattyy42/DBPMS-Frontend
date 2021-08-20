@@ -10,7 +10,7 @@ class Complain extends Component {
             id: "",
             complainData: {
                 complain: "",
-               
+
             },
             isLoading: "",
         }
@@ -31,22 +31,27 @@ class Complain extends Component {
         e.preventDefault();
         const token = localStorage.getItem('token');
         this.setState({ isLoading: true });
-        
+
         axios.post(`http://127.0.0.1:8000/api/applicant/submitComplain/${this.state.id}`, this.state.complainData, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
         }).then((response) => {
-            console.log(response.data);
+            if (response.status === 201) {
+                Swal.fire({
+                    title: 'Success',
+                    type: 'success',
+                    text: 'Complain successfully submitted',
+                });
+
+            }
             if (response.status === 200) {
                 Swal.fire({
                     title: 'Failed',
-                    type: 'success',
+                    type: 'failed',
                     text: response.data.complain,
                 });
-
-                
             }
 
         }).catch((err) => {
@@ -57,6 +62,11 @@ class Complain extends Component {
                     type: 'success',
                     text: err.response.data.errors.complain,
                 });
+            }
+        });
+        this.setState({
+            complainData: {
+                complain: ""
             }
         });
     }

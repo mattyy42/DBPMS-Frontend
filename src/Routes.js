@@ -36,8 +36,8 @@ import BuildingOfficerRoute from './BuildingOfficerRoute';
 import AdminRoute from './AdminRoute';
 import Unauthorized from './Unauthorized';
 import ShowComplain from './Applicant/complain/ShowComplain';
+import EditComplain from './Applicant/complain/EditComplain';
 function Routes() {
-    const role = localStorage.getItem("role");
     return (
         <>
             {/* <Header /> */}
@@ -70,7 +70,7 @@ function Routes() {
                 <ApplicantRoute path="/applicant/application" component={Applicationform} />
                 <ApplicantRoute exact path="/applicant/viewPc" component={ViewPlanningConsent} />
                 <ApplicantRoute exact path="/applicant/viewComplain" component={ShowComplain}/>
-
+                <ApplicantRoute exact path="/applicant/editComlain/:id" component={EditComplain}/>
 
                 <ApplicantRoute path="/applicant/view" component={Viewapplication} />
                 <ApplicantRoute exact path="/applicant/submitComplain/:id" component={Complain} />

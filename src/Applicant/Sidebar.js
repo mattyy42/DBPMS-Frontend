@@ -23,13 +23,10 @@ class Sidebar extends Component {
             .get("http://localhost:8000/api/user",
                 { headers: { authorization: `Bearer ${tokenString}` } })
             .then((response) => {
-
-
                 if (response.massage == "unauthenticated") {
 
                 }
                 this.setState({
-
                     first_name: response.data.first_name,
                     last_name: response.data.last_name,
                     // building_officer: response.data.buildingOfficer,
@@ -107,14 +104,6 @@ class Sidebar extends Component {
                                         </p>
                                     </a>
                                     <ul className="nav nav-treeview">
-                                        <Link to="/applicant/complain">
-                                            <li className="nav-item">
-                                                <a className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Submit Complain</p>
-                                                </a>
-                                            </li>
-                                        </Link>
                                         <Link to="/applicant/viewComplain">
                                             <li className="nav-item">
                                                 <a className="nav-link">

@@ -6,9 +6,7 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 export default class Applicationform extends Component {
     userData;
-    constructor(props) {
-      
-      
+    constructor(props) {     
       super(props);
       this.HandleClick = this.HandleClick.bind(this);
       this.state = {
@@ -34,6 +32,7 @@ export default class Applicationform extends Component {
           consultingFirmLevel: "",
           consultingFirmPhone: "",
           consultingFirmAddress: "", 
+          revitFile:"",
         },
         
         

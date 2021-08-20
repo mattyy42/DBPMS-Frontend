@@ -1,5 +1,4 @@
-  
-import React, { Component } from 'react'
+  import React, { Component } from 'react'
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
 
@@ -26,7 +25,7 @@ class SideBar extends Component {
       .then((response) => {
 
 
-        if (response.massage == "unauthenticated") {
+        if (response.massage === "unauthenticated") {
 
         }
         this.setState({

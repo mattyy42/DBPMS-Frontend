@@ -1,71 +1,28 @@
 import React, { Component } from 'react'
-import Header from '../../Applicant/Header'
 import axios from 'axios';
 import Sidebar from '../Sidebar'
+import Header from '../Header'
 import Swal from 'sweetalert2';
-class AddBureau extends Component {
+class EditComplain extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            signupData: {
-                bureau: "",
-                subcity: "",
-                isLoading: "",
+            id: "",
+            complainData: {
+                complain: "",
+
             },
-            msg: "",
-        };
+            isLoading: "",
+        }
+
     }
-    HandleClick() {  
-        Swal.fire({  
-          title: 'Success',  
-          type: 'success',  
-          text: 'successfuly Added new Bureau ',  
-        });  
-      }
-    onChangehandler = (e, key) => {
-        const { signupData } = this.state;
-        signupData[e.target.name] = e.target.value;
-        this.setState({ signupData });
-    };
-    onSubmitHandler = (e) => {
-        e.preventDefault();
-        this.setState({ isLoading: true });
-        axios
-            .post("http://localhost:8000/api/addBureau", this.state.signupData)
-            .then((response) => {
-                this.setState({ isLoading: false });
-                if (response.status === 201) {
-                    this.HandleClick();
-                    this.setState({
-                        msg: response.message,
-                        signupData: {
-                            Bureau: "",
-                            subcity: "",
-                        },
-                    });
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        this.setState({
+            id: id
+        })
 
-                    // MySwal.fire(
-                    //     'Good job!',
-                    //     'You clicked the button!',
-                    //     'success'
-                    //   )
-                    setTimeout(() => {
-                        this.setState({ msg: "" });
-                    }, 2000);
-                    this.setState({
-                        msg: response.msg,
-                        redirect: true,
-                    });
-                }
-
-                if (response.status === "failed") {
-                    this.setState({ msg: response.msg });
-                    setTimeout(() => {
-                        this.setState({ msg: "" });
-                    }, 2000);
-                }
-            });
-    };
+    }
     render() {
         return (
             <div>
@@ -77,12 +34,12 @@ class AddBureau extends Component {
                         <div className="container-fluid">
                             <div className="row mb-2">
                                 <div className="col-sm-6">
-                                    <h1>Add Bureau</h1>
+                                    <h1>Submit Complain</h1>
                                 </div>
                                 <div className="col-sm-6">
                                     <ol className="breadcrumb float-sm-right">
                                         <li className="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li className="breadcrumb-item active">RegisterBoard</li>
+                                        <li className="breadcrumb-item active">Validation</li>
                                     </ol>
                                 </div>
                             </div>
@@ -104,13 +61,9 @@ class AddBureau extends Component {
                                         <form >
                                             <div className="card-body">
                                                 <div className="form-group">
-                                                    <label htmlFor="firstInput">Enter SubCity</label>
-                                                    <input type="text" name="subcity" className="form-control" id="firstInput" placeholder="Enter subcity" value={this.state.signupData.subcity} onChange={this.onChangehandler} />
+                                                    <label htmlFor="firstInput">Enter your complain</label>
+                                                    <textarea type="text" name="complain" className="form-control" id="firstInput" placeholder="Enter Complain" value={this.state.complainData.complain} onChange={this.onChangehandler} />
                                                 </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="lastInput">Enter Bureau</label>
-                                                    <input type="text" name="Bureau" className="form-control" id="lastInput" placeholder="Enter bureau code" value={this.state.signupData.Bureau} onChange={this.onChangehandler} />
-                                                </div>            
                                             </div>
                                             {/* /.card-body */}
                                             <div className="card-footer">
@@ -132,10 +85,7 @@ class AddBureau extends Component {
                     {/* /.content */}
                 </div>
             </div>
-
-
-
         )
     }
 }
-export default AddBureau;
+export default EditComplain;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../../Applicant/Header'
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
 import Sidebar from '../Sidebar'
 import Swal from 'sweetalert2';
 class EditBureau extends Component {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../../Applicant/Header'
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
 import Sidebar from '../Sidebar'
 import Swal from 'sweetalert2';
 
@@ -23,13 +22,13 @@ class RegisterBO extends Component {
             allBureau: []
         };
     }
-    HandleClick() {  
-        Swal.fire({  
-          title: 'Success',  
-          type: 'success',  
-          text: 'successfuly Registered Building officer ,We will inform the user to know soon',  
-        });  
-      }
+    HandleClick() {
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfuly Registered Building officer ,We will inform the user to know soon',
+        });
+    }
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/getAllBureau').then(
             (response) => {
@@ -52,7 +51,7 @@ class RegisterBO extends Component {
             .then((response) => {
                 this.setState({ isLoading: false });
                 if (response.status === 201) {
-                  this.HandleClick();
+                    this.HandleClick();
                     this.setState({
                         msg: response.message,
                         signupData: {

@@ -7,7 +7,7 @@ class Header extends Component {
         axios.get('http://127.0.0.1:8000/api/logout')
             .then((response) => {
                 console.log(response.data.success);
-                if (response.status == 200 && response.data.success == false) {
+                if (response.status === 200 && response.data.success === false) {
                     localStorage.removeItem("isLoggedIn");
                     this.props.history.push('/login');
                 }

@@ -8,33 +8,33 @@ class Sidebar extends Component {
         super(props);
         this.state = {
 
-           first_name: "",
-           last_name: "",
-           email: "",
-           password: "",
-           confirm_password: "",
-           phone_number: "",
-       }
-   }
-   componentDidMount(){
-       const tokenString = localStorage.getItem('token');
-       axios
-       .get("http://localhost:8000/api/user",
-           { headers: { authorization: `Bearer ${tokenString}` } })
-       .then((response) => {
-           if (response.massage == "unauthenticated") {
-              
-           }
-           this.setState({
+            first_name: "",
+            last_name: "",
+            email: "",
+            password: "",
+            confirm_password: "",
+            phone_number: "",
+        }
+    }
+    componentDidMount() {
+        const tokenString = localStorage.getItem('token');
+        axios
+            .get("http://localhost:8000/api/user",
+                { headers: { authorization: `Bearer ${tokenString}` } })
+            .then((response) => {
+                if (response.massage === "unauthenticated") {
 
-               first_name: response.data.first_name,
-               last_name: response.data.last_name,
-               // building_officer: response.data.buildingOfficer,
-           })
+                }
+                this.setState({
 
-       })
-   
-   }
+                    first_name: response.data.first_name,
+                    last_name: response.data.last_name,
+                    // building_officer: response.data.buildingOfficer,
+                })
+
+            })
+
+    }
     render() {
 
         return (
@@ -46,10 +46,10 @@ class Sidebar extends Component {
                         {/* Sidebar user panel (optional) */}
                         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                             <div className="image">
-                                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+                                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" />
                             </div>
                             <div className="info">
-                            <a href="#" className="d-block">{this.state.first_name} {this.state.last_name}</a>
+                                <a href="#" className="d-block">{this.state.first_name} {this.state.last_name}</a>
                             </div>
                         </div>
                         <nav className="mt-2">

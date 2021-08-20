@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../../Applicant/Header'
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
-import { withRouter } from "react-router";
 import Sidebar from '../Sidebar'
 import Swal from 'sweetalert2';
 class EditBO extends Component {

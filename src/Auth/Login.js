@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import Pusher from 'pusher-js';
-import Echo from 'laravel-echo';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -18,9 +16,9 @@ class Login extends Component {
       errMsg: "",
     };
   }
-  componentDidMount(){
-    
-    
+  componentDidMount() {
+
+
   }
   onChangehandler = (e) => {
     let name = e.target.name;
@@ -40,52 +38,52 @@ class Login extends Component {
       })
       .then((response) => {
         this.setState({ isLoading: false });
-      
+
         if (response.status === 200) {
           localStorage.setItem("isLoggedIn", true);
           localStorage.setItem("isSubmitted", false);
           localStorage.setItem('token', response.data.token);
           localStorage.setItem("role", response.data.user.role);
-        
+
           this.setState({
             msg: response.data.message,
             redirect: true,
             role: response.data.user.role,
           });
         }
-       
-      }).catch((err) =>{
+
+      }).catch((err) => {
         //handle error
         if (
           err.response.status === 401) {
           this.setState({
-           // errMsg: errresponse.data.error,
-           isLoading:false,
+            // errMsg: errresponse.data.error,
+            isLoading: false,
             isShowError: true,
           });
 
         }
-    });
-      
+      });
+
   };
   render() {
     const login = localStorage.getItem("isLoggedIn");
     if (login) {
       if (this.state.redirect) {
-        if (this.state.role == 'admin') {
+        if (this.state.role === 'admin') {
           return <Redirect to="/admin" />;
         }
-        if (this.state.role == 'applicant') {
+        if (this.state.role === 'applicant') {
           return <Redirect to="/applicant" />;
         }
-        if (this.state.role == 'BO') {
+        if (this.state.role === 'BO') {
           return <Redirect to="/bo/dashboard" />
         }
       }
     }
-    
+
     const isLoading = this.state.isLoading;
-    const isShowError=this.state.isShowError;
+    const isShowError = this.state.isShowError;
     return (
       <div className="hold-transition login-page">
         <div className="login-box">
