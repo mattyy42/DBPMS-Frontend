@@ -23,7 +23,7 @@ class Sidebar extends Component {
             .get("http://localhost:8000/api/user",
                 { headers: { authorization: `Bearer ${tokenString}` } })
             .then((response) => {
-                if (response.massage == "unauthenticated") {
+                if (response.massage === "unauthenticated") {
 
                 }
                 this.setState({

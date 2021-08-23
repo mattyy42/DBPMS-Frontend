@@ -34,7 +34,7 @@ class ProfileBOA extends Component {
                                     <div className="card card-primary card-outline">
                                         <div className="card-body box-profile">
                                             <div className="text-center">
-                                                <img className="profile-user-img img-fluid img-circle" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="User profile picture" />
+                                                <img className="profile-user-img img-fluid img-circle" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="" />
                                             </div>
                                             <h3 className="profile-username text-center">witness matiwos </h3>
                                             <p className="text-muted text-center">Building officer</p>

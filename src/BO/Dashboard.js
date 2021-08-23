@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom';
 import axios from 'axios';
 class Dashboard extends Component {
   constructor(props) {
@@ -71,7 +70,7 @@ class Dashboard extends Component {
                             {applicationDatas.map((application) =>
                               <tr>
                                 <th>{application.applicant.first_name}</th>
-                                 {/* <th>{application.appointment.appointment_time}</th> */}
+                                {/* <th>{application.appointment.appointment_time}</th> */}
                                 <th>30%</th>
                                 <th>pending</th>
                                 <td>
@@ -79,10 +78,10 @@ class Dashboard extends Component {
                                     see more
                                   </button>
                                   <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">view application</a>
-                                    <a class="dropdown-item" href="#">delete application</a>
-                                    <a class="dropdown-item" href="#">Add comment</a>
-                                    <a class="dropdown-item" href="#">Go to appp</a>
+                                    <a class="dropdown-item" href="#viewA">view application</a>
+                                    <a class="dropdown-item" href="#delete">delete application</a>
+                                    <a class="dropdown-item" href="#addC">Add comment</a>
+                                    <a class="dropdown-item" href="#goTo">Go to appp</a>
                                   </div>
                                 </td>
                               </tr>

@@ -1,7 +1,6 @@
-  import React, { Component } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-
 
 class SideBar extends Component {
 
@@ -50,16 +49,16 @@ class SideBar extends Component {
             {/* Sidebar user panel (optional) */}
             <div className="user-panel mt-3 pb-3 mb-3 d-flex">
               <div className="image">
-                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="" />
               </div>
               <div className="info">
-                <a href="#" className="d-block">{this.state.first_name} {this.state.last_name}</a>
+                <a href="#first_name" className="d-block">{this.state.first_name} {this.state.last_name}</a>
               </div>
             </div>
             <nav className="mt-2">
               <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li className="nav-item">
-                  <a href="#" className="nav-link">
+                  <a href="#view" className="nav-link">
                     <p>
                       View assigned application
                 {/* <span className="right badge badge-danger">0 complains</span> */}
@@ -75,7 +74,7 @@ class SideBar extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a href="#" className="nav-link">
+                  <a href="#review" className="nav-link">
                     <p>
                       Review Application
 
@@ -83,7 +82,7 @@ class SideBar extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a href="#" className="nav-link">
+                  <a href="#viewNotification" className="nav-link">
                     <p>
                       View Notification
 

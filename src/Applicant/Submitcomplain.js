@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Header from './Header'
 import axios from 'axios';
 import Sidebar from './Sidebar'
-import Swal from "sweetalert2";
 export default class Submitcomplain extends Component {
     constructor(props) {
         super(props);

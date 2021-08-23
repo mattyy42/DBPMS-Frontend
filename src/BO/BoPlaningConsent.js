@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import SideBar from './SideBar'
 import Header from '../Applicant/Header'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 class BoPlaningConsent extends Component {
     constructor(props) {
@@ -27,7 +26,7 @@ class BoPlaningConsent extends Component {
             .get("http://localhost:8000/api/bo/pc",
                 { headers: { authorization: `Bearer ${tokenString}` } })
             .then((response) => {
-                if (response.massage == "unauthenticated") {
+                if (response.massage === "unauthenticated") {
                     console.log('hey');
                 }
                 console.log(response.data.data);

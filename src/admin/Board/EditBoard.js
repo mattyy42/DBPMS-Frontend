@@ -21,13 +21,13 @@ class EditBoard extends Component {
             allBureau: []
         };
     }
-    HandleClick() {  
-        Swal.fire({  
-          title: 'Success',  
-          type: 'success',  
-          text: 'successfully Edited ',  
-        });  
-      }
+    HandleClick() {
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfully Edited ',
+        });
+    }
     componentDidMount() {
         const { id } = this.props.match.params;
         axios.get(`http://127.0.0.1:8000/api/admin/getUserById/${id}`).then(
@@ -82,7 +82,7 @@ class EditBoard extends Component {
                         },
                     });
 
-                    
+
                     setTimeout(() => {
                         this.setState({ msg: "" });
                     }, 2000);
@@ -115,7 +115,7 @@ class EditBoard extends Component {
                                 </div>
                                 <div className="col-sm-6">
                                     <ol className="breadcrumb float-sm-right">
-                                        <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li className="breadcrumb-item"><a href="#home">Home</a></li>
                                         <li className="breadcrumb-item active">RegisterBoard</li>
                                     </ol>
                                 </div>

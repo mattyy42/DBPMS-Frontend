@@ -46,16 +46,16 @@ class Sidebar extends Component {
                         {/* Sidebar user panel (optional) */}
                         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                             <div className="image">
-                                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" />
+                                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="" />
                             </div>
                             <div className="info">
-                                <a href="#" className="d-block">{this.state.first_name} {this.state.last_name}</a>
+                                <a href="#last_name" className="d-block">{this.state.first_name} {this.state.last_name}</a>
                             </div>
                         </div>
                         <nav className="mt-2">
                             <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 <li className="nav-item menu">
-                                    <a className="nav-link ">
+                                    <a href="#board" className="nav-link ">
                                         <i className="nav-icon fas fa-file" />
                                         <p>Board of Appliance
                                             <i className="right fas fa-angle-left" />
@@ -64,7 +64,7 @@ class Sidebar extends Component {
                                     <ul className="nav nav-treeview">
                                         <Link to="/admin/registerBoard">
                                             <li className="nav-item">
-                                                <a className="nav-link">
+                                                <a href="#addBo" className="nav-link">
                                                     <i className="far fa-circle nav-icon" />
                                                     <p>Add Board of appliance</p>
                                                 </a>
@@ -72,7 +72,7 @@ class Sidebar extends Component {
                                         </Link>
                                         <Link to="/admin/boards">
                                             <li className="nav-item">
-                                                <a className="nav-link">
+                                                <a className="nav-link" href="#manage">
                                                     <i className="far fa-circle nav-icon" />
                                                     <p>Manage Board of appliance</p>
                                                 </a>
@@ -91,7 +91,7 @@ class Sidebar extends Component {
                                 </li>
 
                                 <li className="nav-item menu">
-                                    <a className="nav-link ">
+                                    <a className="nav-link " href="#building">
                                         <i className="nav-icon fas fa-file" />
                                         <p>Building Officer
                                             <i className="right fas fa-angle-left" />
@@ -100,7 +100,7 @@ class Sidebar extends Component {
                                     <ul className="nav nav-treeview">
                                         <Link to="/admin/registerBO">
                                             <li className="nav-item">
-                                                <a className="nav-link">
+                                                <a className="nav-link" href="#addBo">
                                                     <i className="far fa-circle nav-icon" />
                                                     <p>Add Building Officer</p>
                                                 </a>
@@ -108,7 +108,7 @@ class Sidebar extends Component {
                                         </Link>
                                         <Link to="/admin/officer">
                                             <li className="nav-item">
-                                                <a className="nav-link">
+                                                <a className="nav-link" href="#account">
                                                     <i className="far fa-circle nav-icon" />
                                                     <p>Manage Accounts</p>
                                                 </a>
@@ -119,7 +119,7 @@ class Sidebar extends Component {
                                     </ul>
                                 </li>
                                 <li className="nav-item menu">
-                                    <a className="nav-link ">
+                                    <a className="nav-link " href="#buraus">
                                         <i className="nav-icon fas fa-file" />
                                         <p>Bureaus
                                             <i className="right fas fa-angle-left" />
@@ -128,7 +128,7 @@ class Sidebar extends Component {
                                     <ul className="nav nav-treeview">
                                         <Link to="/admin/manageBureau">
                                             <li className="nav-item">
-                                                <a className="nav-link">
+                                                <a className="nav-link" href="#manageBurau">
                                                     <i className="far fa-circle nav-icon" />
                                                     <p>Manage Bureaus</p>
                                                 </a>

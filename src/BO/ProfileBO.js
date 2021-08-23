@@ -34,7 +34,7 @@ class ProfileBO extends Component {
                                     <div className="card card-primary card-outline">
                                         <div className="card-body box-profile">
                                             <div className="text-center">
-                                                <img className="profile-user-img img-fluid img-circle" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="User profile picture" />
+                                                <img className="profile-user-img img-fluid img-circle" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="" />
                                             </div>
                                             <h3 className="profile-username text-center">witness matiwos </h3>
                                             <p className="text-muted text-center">Building officer</p>
@@ -89,10 +89,10 @@ class ProfileBO extends Component {
                                                     {/* Post */}
                                                     <div className="post">
                                                         <div className="user-block">
-                                                            <img className="img-circle img-bordered-sm" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="user image" />
+                                                            <img className="img-circle img-bordered-sm" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="" />
                                                             <span className="username">
-                                                                <a href="#">witness matiwos</a>
-                                                                <a href="#" className="float-right btn-tool"><i className="fas fa-times" /></a>
+                                                                <a href="#witness">witness matiwos</a>
+                                                                <a href="#fas" className="float-right btn-tool"><i className="fas fa-times" /></a>
                                                             </span>
 
                                                         </div>
@@ -108,7 +108,7 @@ class ProfileBO extends Component {
 
 
                                                             <span className="float-right">
-                                                                <a href="#" className="link-black text-sm">
+                                                                <a href="#float" className="link-black text-sm">
 
                                                                 </a>
                                                             </span>
@@ -139,7 +139,7 @@ class ProfileBO extends Component {
                                                             <i className="fas fa-envelope bg-primary" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 12:05</span>
-                                                                <h3 className="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+                                                                <h3 className="timeline-header"><a href="#support">Support Team</a> sent you an email</h3>
                                                                 <div className="timeline-body">
                                                                     Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
                                                                     weebly ning heekya handango imeem plugg dopplr jibjab, movity
@@ -147,8 +147,8 @@ class ProfileBO extends Component {
                                                                     quora plaxo ideeli hulu weebly balihoo...
                           </div>
                                                                 <div className="timeline-footer">
-                                                                    <a href="#" className="btn btn-primary btn-sm">Read more</a>
-                                                                    <a href="#" className="btn btn-danger btn-sm">Delete</a>
+                                                                    <a href="#read" className="btn btn-primary btn-sm">Read more</a>
+                                                                    <a href="#delete" className="btn btn-danger btn-sm">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -158,7 +158,7 @@ class ProfileBO extends Component {
                                                             <i className="fas fa-user bg-info" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 5 mins ago</span>
-                                                                <h3 className="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend request
+                                                                <h3 className="timeline-header border-0"><a href="#sarah">Sarah Young</a> accepted your friend request
                           </h3>
                                                             </div>
                                                         </div>
@@ -168,14 +168,14 @@ class ProfileBO extends Component {
                                                             <i className="fas fa-comments bg-warning" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 27 mins ago</span>
-                                                                <h3 className="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                                                                <h3 className="timeline-header"><a href="#Jay">Jay White</a> commented on your post</h3>
                                                                 <div className="timeline-body">
                                                                     Take me to your leader!
                                                                     Switzerland is small and neutral!
                                                                     We are more like Germany, ambitious and misunderstood!
                           </div>
                                                                 <div className="timeline-footer">
-                                                                    <a href="#" className="btn btn-warning btn-flat btn-sm">View comment</a>
+                                                                    <a href="#viewCo" className="btn btn-warning btn-flat btn-sm">View comment</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -192,7 +192,7 @@ class ProfileBO extends Component {
                                                             <i className="fas fa-camera bg-purple" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 2 days ago</span>
-                                                                <h3 className="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+                                                                <h3 className="timeline-header"><a href="#Mina">Mina Lee</a> uploaded new photos</h3>
                                                                 <div className="timeline-body">
                                                                     <img src="https://placehold.it/150x100" alt="..." />
                                                                     <img src="https://placehold.it/150x100" alt="..." />
@@ -244,7 +244,7 @@ class ProfileBO extends Component {
                                                             <div className="offset-sm-2 col-sm-10">
                                                                 <div className="checkbox">
                                                                     <label>
-                                                                        <input type="checkbox" /> I agree to the <a href="#">terms and conditions</a>
+                                                                        <input type="checkbox" /> I agree to the <a href="#terms">terms and conditions</a>
                                                                     </label>
                                                                 </div>
                                                             </div>

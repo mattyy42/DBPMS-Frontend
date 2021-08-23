@@ -4,7 +4,7 @@ import Header from './Header'
 import { Link } from 'react-router-dom'
 export default class Getstarted extends Component {
     render() {
-        
+
         return (
             <div>
                 <Header />
@@ -19,7 +19,7 @@ export default class Getstarted extends Component {
                                     </div>{/* /.col */}
                                     <div className="col-sm-6">
                                         <ol className="breadcrumb float-sm-right">
-                                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li className="breadcrumb-item"><a href="#home" >Home</a></li>
                                             <li className="breadcrumb-item active">Get Started</li>
                                         </ol>
                                     </div>{/* /.col */}
@@ -347,16 +347,16 @@ export default class Getstarted extends Component {
 
                     </div>
                     <div className="col text-center">
-                   <Link exact to="./apply">
-                   <button type="button" className="btn btn-block btn-info btn-sm">Start Here</button> 
-                   </Link>
-                                   </div>
-                                   
+                        <Link exact to="./apply">
+                            <button type="button" className="btn btn-block btn-info btn-sm">Start Here</button>
+                        </Link>
+                    </div>
+
                 </div>
-               
-                
+
+
             </div>
-            
+
         )
     }
 }

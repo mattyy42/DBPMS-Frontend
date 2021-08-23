@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 class SideBar extends Component {
 
     constructor(props) {
-         super(props);
-         this.state = {
+        super(props);
+        this.state = {
 
             first_name: "",
             last_name: "",
@@ -17,26 +17,26 @@ class SideBar extends Component {
             phone_number: "",
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         const tokenString = localStorage.getItem('token');
         axios
-        .get("http://localhost:8000/api/user",
-            { headers: { authorization: `Bearer ${tokenString}` } })
-        .then((response) => {
-         
+            .get("http://localhost:8000/api/user",
+                { headers: { authorization: `Bearer ${tokenString}` } })
+            .then((response) => {
 
-            if (response.massage == "unauthenticated") {
-                
-            }
-            this.setState({
 
-                first_name: response.data.first_name,
-                last_name: response.data.last_name,
-                // building_officer: response.data.buildingOfficer,
+                if (response.massage === "unauthenticated") {
+
+                }
+                this.setState({
+
+                    first_name: response.data.first_name,
+                    last_name: response.data.last_name,
+                    // building_officer: response.data.buildingOfficer,
+                })
+
             })
 
-        })
-    
     }
     render() {
         console.log(this.state.first_name)
@@ -50,7 +50,7 @@ class SideBar extends Component {
                         {/* Sidebar user panel (optional) */}
                         <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                             <div className="image">
-                                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+                                <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="" />
                             </div>
                             <div className="info">
                                 <a href="#" className="d-block">{this.state.first_name} {this.state.last_name}</a>
@@ -74,13 +74,13 @@ class SideBar extends Component {
                                                 </a>
                                             </li>
                                         </Link>
-                                        
-                                        
-                                        
+
+
+
                                     </ul>
                                 </li>
 
-                                
+
 
                                 <Link to="/applicant/apply">
                                     <li className="nav-item">
