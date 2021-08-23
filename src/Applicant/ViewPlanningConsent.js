@@ -18,7 +18,7 @@ class ViewPlanningConsent extends Component {
             .get("http://localhost:8000/api/applicant/viewpc",
                 { headers: { authorization: `Bearer ${tokenString}` } })
             .then((response) => {
-                if (response.massage == "unauthenticated") {
+                if (response.massage === "unauthenticated") {
                     console.log('hey');
                 }
                 console.log(response.data.data);

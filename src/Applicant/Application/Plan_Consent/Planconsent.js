@@ -150,11 +150,7 @@ export default class Planconsent extends Component {
           });
 
         }
-      });;
-    // function sub(params) {
-    //   this.HandleClick();
-    //   this.onSubmitHandler();
-    // }
+      });   
   };
 
 
