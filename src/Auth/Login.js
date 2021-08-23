@@ -79,6 +79,9 @@ class Login extends Component {
         if (this.state.role === 'BO') {
           return <Redirect to="/bo/dashboard" />
         }
+        if (this.state.role == 'BA') {
+          return <Redirect to="/ba/dashboard" />
+        }
       }
     }
 

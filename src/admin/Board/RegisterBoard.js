@@ -133,7 +133,7 @@ class RegisterBoard extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="phoneInput">Enter phone number </label>
-                                                    <input type="number" name="phone_number" className="form-control" id="phoneInput" placeholder="Enter phone number" value={this.state.signupData.phone_number} onChange={this.onChangehandler} />
+                                                    <input type="tel" name="phone_number" className="form-control" id="phoneInput" placeholder="Enter phone number" value={this.state.signupData.phone_number} onChange={this.onChangehandler} />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="exampleInputEmail1">Email address</label>
@@ -143,20 +143,14 @@ class RegisterBoard extends Component {
                                                     <label htmlFor="exampleInputPassword1">Password</label>
                                                     <input type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={this.state.signupData.password} onChange={this.onChangehandler} />
                                                 </div>
-                                                {/* <div className="form-group">
-                                                    <label htmlFor="roleInput">Role</label>
-                                                    <select name="role" onChange={this.onChangehandler} className="custom-select">
-                                                        <option value="">Select Role</option>
-                                                        <option value="BA">Board of appliance</option>
-                                                    </select>
-                                                </div> */}
+                                              
                                                 <div className="form-group">
                                                     <label htmlFor="bureau">Bureau</label>
                                                     <select name="bureau" onChange={this.onChangehandler} className="custom-select">
                                                         <option value="">Select Bureau</option>
                                                         {this.state.allBureau.map((bureau) => (
 
-                                                            <option value={bureau.subcity}>{bureau.subcity}</option>
+                                                            <option value={bureau.Bureau}>{bureau.subcity}</option>
                                                         ))}
 
                                                     </select>

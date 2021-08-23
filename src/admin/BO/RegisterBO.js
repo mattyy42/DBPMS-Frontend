@@ -129,7 +129,7 @@ class RegisterBO extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="phoneInput">Enter phone number </label>
-                                                    <input type="number" name="phone_number" className="form-control" id="phoneInput" placeholder="Enter phone number" value={this.state.signupData.phone_number} onChange={this.onChangehandler} />
+                                                    <input type="tel" name="phone_number" className="form-control" id="phoneInput" placeholder="Enter phone number" value={this.state.signupData.phone_number} onChange={this.onChangehandler} />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="exampleInputEmail1">Email address</label>
@@ -155,7 +155,7 @@ class RegisterBO extends Component {
                                                         <option value="">Select Bureau</option>
                                                         {this.state.allBureau.map((bureau) => (
 
-                                                            <option value={bureau.subcity}>{bureau.subcity}</option>
+                                                            <option value={bureau.Bureau}>{bureau.subcity}</option>
                                                         ))}
 
                                                     </select>

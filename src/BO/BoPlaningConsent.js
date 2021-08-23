@@ -9,15 +9,18 @@ class BoPlaningConsent extends Component {
         super(props);
         this.state = {
             planingConsents: [],
+            rejected: [],
+            accepted: [],
+            pend: []
         }
     }
-    HandleClick() {  
-        Swal.fire({  
-          title: 'Success',  
-          type: 'success',  
-          text: 'successfully Approved',  
-        });  
-      }
+    HandleClick() {
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfully Approved',
+        });
+    }
     componentDidMount() {
         const tokenString = localStorage.getItem('token');
         axios
@@ -30,34 +33,36 @@ class BoPlaningConsent extends Component {
                 console.log(response.data.data);
                 this.setState({
                     planingConsents: response.data.data,
-                    // building_officer: response.data.buildingOfficer,
+                    rejected: response.data.data.filter(data => data.status === 2),
+                    accepted: response.data.data.filter(data => data.status === 1),
+                    pend: response.data.data.filter(data => data.status === 0),
                 })
 
             })
 
     }
-    acceptPC = async id =>{
+    acceptPC = async id => {
         const tokenString = localStorage.getItem('token');
         await axios
-          .get(`http://localhost:8000/api/bo/acceptPc/${id}`,
-          { headers: { authorization: `Bearer ${tokenString}` } });
-          this.HandleClick(); 
+            .get(`http://localhost:8000/api/bo/acceptPc/${id}`,
+                { headers: { authorization: `Bearer ${tokenString}` } });
+        this.HandleClick();
         window.location.reload();
-      };
-      rejectPc= async id => {
+    };
+    rejectPc = async id => {
         const tokenString = localStorage.getItem('token');
         await axios
-          .get(`http://localhost:8000/api/bo/rejectPc/${id}`,
-          { headers: { authorization: `Bearer ${tokenString}` } });
-          Swal.fire({  
-            title: 'Success',  
-            type: 'success',  
-            text: 'successfully Rejected',  
-          });
-          window.location.reload(); 
-      }
+            .get(`http://localhost:8000/api/bo/rejectPc/${id}`,
+                { headers: { authorization: `Bearer ${tokenString}` } });
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfully Rejected',
+        });
+        window.location.reload();
+    }
     render() {
-        const { planingConsents } = this.state;
+        const { planingConsents, rejected, accepted, pend } = this.state;
         return (
             <div>
                 <Header />
@@ -91,8 +96,8 @@ class BoPlaningConsent extends Component {
                                         <div className="info-box-content">
                                             <span className="info-box-text">Applications</span>
                                             <span className="info-box-number">
-                                                10
-                        <small> Total</small>
+                                                {planingConsents.length}
+                                                <small> Total</small>
                                             </span>
                                         </div>
                                         {/* /.info-box-content */}
@@ -105,8 +110,10 @@ class BoPlaningConsent extends Component {
                                         <span className="info-box-icon bg-danger elevation-1"><i className="fas fa-ban" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Rejected</span> <span className="info-box-number">
-                                                10
-                        <small> Total</small>
+                                                {
+                                                    rejected.length
+                                                }
+                                                <small> Total</small>
                                             </span>
                                         </div>
                                         {/* /.info-box-content */}
@@ -121,7 +128,7 @@ class BoPlaningConsent extends Component {
                                         <span className="info-box-icon bg-success elevation-1"><i className="fas fa-thumbs-up" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Accepted</span>
-                                            <span className="info-box-number">760</span>
+                                            <span className="info-box-number">{accepted.length}</span>
                                         </div>
                                         {/* /.info-box-content */}
                                     </div>
@@ -131,7 +138,7 @@ class BoPlaningConsent extends Component {
                                         <span className="info-box-icon bg-warning elevation-1"><i className="fa fa-exclamation" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Pending</span>
-                                            <span className="info-box-number">2,000</span>
+                                            <span className="info-box-number">{pend.length}</span>
                                         </div>
                                         {/* /.info-box-content */}
                                     </div>
@@ -172,15 +179,31 @@ class BoPlaningConsent extends Component {
                                                         <td key={index}>{planingConsent.id}</td>
                                                         <td >{planingConsent.applicant.first_name}</td>
                                                         <td >{planingConsent.bureau}</td>
-                                                        <td >{planingConsent.status === 0 ? "Panding" : "Approved"}</td>
+                                                        <td >{(() => {
+                                                            if (planingConsent.status === 0) {
+                                                                return <p>Pending</p>
+                                                            } if (planingConsent.status === 1) {
+                                                                return <p>Accepted</p>
+                                                            } if (planingConsent.status === 2) {
+                                                                return <p>Rejected</p>
+                                                            }
+                                                        })()}</td>
                                                         <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
-                                                        {planingConsent.status === 0 ?
+                                                        {/* {planingConsent.status === 0 ?
                                                         <td ><button onClick={this.acceptPC.bind(this,planingConsent.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>:
                                                         <td ><button onClick={this.rejectPc.bind(this,planingConsent.id)} class="btn btn-block btn-outline-danger btn-xs">Reject</button></td>
-                                                        }
-                                                        
+                                                        } */}
+                                                        {(() => {
+                                                            if (planingConsent.status === 0) {
+                                                                return <td ><button onClick={this.acceptPC.bind(this, planingConsent.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>
+                                                            } else if (planingConsent.status === 1) {
+                                                                return <td><button onClick={this.rejectPc.bind(this, planingConsent.id)} class="btn btn-block btn-outline-danger btn-xs">Reject</button></td>
+                                                            } else if (planingConsent.status === 2) {
+                                                                return <td><button onClick={this.acceptPC.bind(this, planingConsent.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>
+                                                            }
+                                                        })()}
 
-                                                        {/* <td >{application.appointment.appointment_time}</td> */}
+
                                                     </tr>
                                                 )}
                                             </tbody>

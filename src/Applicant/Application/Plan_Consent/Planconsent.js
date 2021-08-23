@@ -299,11 +299,11 @@ export default class Planconsent extends Component {
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleInputsphone_number"> phone_number</label>
-                      <input type="phone" className="form-control" id="phone_number" name="phone_number" placeholder="+2519....." value={this.state.signupData.phone_number} onChange={this.onChangehandler} required />
+                      <input type="tel" className="form-control" id="phone_number" name="phone_number" placeholder="+2519....." value={this.state.signupData.phone_number} onChange={this.onChangehandler} required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleInputsmobile_number"> mobile_numberr</label>
-                      <input type="phone" className="form-control" id="mobile_number" name="mobile_number" placeholder="+2519....." value={this.state.signupData.mobile_number} onChange={this.onChangehandler} required />
+                      <input type="tel" className="form-control" id="mobile_number" name="mobile_number" placeholder="+2519....." value={this.state.signupData.mobile_number} onChange={this.onChangehandler} required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="exampleInputsTIN_number"> TIN Number</label>

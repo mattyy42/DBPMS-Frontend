@@ -66,7 +66,7 @@ class SideBar extends Component {
                                         </p>
                                     </a>
                                     <ul className="nav nav-treeview">
-                                        <Link to="/BOA/viewMyComplain">
+                                        <Link to="/ba/viewMyComplain">
                                             <li className="nav-item">
                                                 <a className="nav-link">
                                                     <i className="far fa-circle nav-icon" />

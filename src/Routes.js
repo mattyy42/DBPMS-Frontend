@@ -1,13 +1,11 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Startapplication from './Applicant/Startapplication';
-// import Home from "./components/pages/HomeComponent";
-// import Login from "./components/pages/LoginComponent";
-// import Register from "./components/pages/RegisterComponent";
-// import PrivateRoute from './PrivateRoute';
-// import { Guard } from './Guard';
-// import Header from './components/layouts/Header';
-// import Dashboard from './Applicant/Dashboard'
+import BoaRoutes from './BoaRoutes';
+import profileBOA from './BOA/profileBOA';
+import BOAFirstpage from './BOA/BOAFirstpage';
+import ViewMyComplain from './BOA/viewMyComplain';
+
 import Fullpage from './Applicant/Fullpage';
 import Login from './Auth/Login';
 import Registration from './Auth/Registration';
@@ -82,6 +80,10 @@ function Routes() {
                 <BuildingOfficerRoute exact path="/bo/dashboard" component={BOFirstPage} />
                 <BuildingOfficerRoute path="/profileBO" component={ProfileBO} />
                 <BuildingOfficerRoute path="/bo/planingConsent" component={BoPlaningConsent} />
+
+                <BoaRoutes exact path="/ba/dashboard" component={BOAFirstpage} />
+                <BoaRoutes path="/profileBOA" component={profileBOA} />
+                <BoaRoutes path="/ba/viewMyComplain" component={ViewMyComplain} />
                 {/*Redirect if not authenticated */}
                 {/* <Guard path="/user" token="user-token" routeRedirect="/user/login" component={PrivateRoute} />  */}
             </Switch>
