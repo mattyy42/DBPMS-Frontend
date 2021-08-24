@@ -4,8 +4,7 @@ import Header from '../Applicant/Header'
 class ProfileBOA extends Component {
     render() {
         return (
-
-            <div>
+               <div>
                 <Header />
                 <SideBar />
                 <div className="content-wrapper">
@@ -89,10 +88,10 @@ class ProfileBOA extends Component {
                                                     {/* Post */}
                                                     <div className="post">
                                                         <div className="user-block">
-                                                            <img className="img-circle img-bordered-sm" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="user image" />
+                                                            <img className="img-circle img-bordered-sm" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="" />
                                                             <span className="username">
-                                                                <a href="#">witness matiwos</a>
-                                                                <a href="#" className="float-right btn-tool"><i className="fas fa-times" /></a>
+                                                                <a href="#wit">witness matiwos</a>
+                                                                <a href="#times" className="float-right btn-tool"><i className="fas fa-times" /></a>
                                                             </span>
 
                                                         </div>
@@ -108,7 +107,7 @@ class ProfileBOA extends Component {
 
 
                                                             <span className="float-right">
-                                                                <a href="#" className="link-black text-sm">
+                                                                <a href="#float" className="link-black text-sm">
 
                                                                 </a>
                                                             </span>
@@ -139,7 +138,7 @@ class ProfileBOA extends Component {
                                                             <i className="fas fa-envelope bg-primary" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 12:05</span>
-                                                                <h3 className="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+                                                                <h3 className="timeline-header"><a href="#support">Support Team</a> sent you an email</h3>
                                                                 <div className="timeline-body">
                                                                     Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
                                                                     weebly ning heekya handango imeem plugg dopplr jibjab, movity
@@ -147,8 +146,8 @@ class ProfileBOA extends Component {
                                                                     quora plaxo ideeli hulu weebly balihoo...
                           </div>
                                                                 <div className="timeline-footer">
-                                                                    <a href="#" className="btn btn-primary btn-sm">Read more</a>
-                                                                    <a href="#" className="btn btn-danger btn-sm">Delete</a>
+                                                                    <a href="#readmore" className="btn btn-primary btn-sm">Read more</a>
+                                                                    <a href="#delete" className="btn btn-danger btn-sm">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -158,7 +157,7 @@ class ProfileBOA extends Component {
                                                             <i className="fas fa-user bg-info" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 5 mins ago</span>
-                                                                <h3 className="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend request
+                                                                <h3 className="timeline-header border-0"><a href="#accept">Sarah Young</a> accepted your friend request
                           </h3>
                                                             </div>
                                                         </div>
@@ -168,14 +167,14 @@ class ProfileBOA extends Component {
                                                             <i className="fas fa-comments bg-warning" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 27 mins ago</span>
-                                                                <h3 className="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                                                                <h3 className="timeline-header"><a href="#jay">Jay White</a> commented on your post</h3>
                                                                 <div className="timeline-body">
                                                                     Take me to your leader!
                                                                     Switzerland is small and neutral!
                                                                     We are more like Germany, ambitious and misunderstood!
                           </div>
                                                                 <div className="timeline-footer">
-                                                                    <a href="#" className="btn btn-warning btn-flat btn-sm">View comment</a>
+                                                                    <a href="#viewcomment" className="btn btn-warning btn-flat btn-sm">View comment</a>
                                                                 </div>
                                                             </div>
                                                         </div>

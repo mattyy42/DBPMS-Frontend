@@ -68,10 +68,10 @@ class Dashboard extends Component {
                                     see more
                                   </button>
                                   <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">view application</a>
-                                    <a class="dropdown-item" href="#">delete application</a>
-                                    <a class="dropdown-item" href="#">Add comment</a>
-                                    <a class="dropdown-item" href="#">Go to appp</a>
+                                    <a class="dropdown-item" href="#view">view application</a>
+                                    <a class="dropdown-item" href="#delete">delete application</a>
+                                    <a class="dropdown-item" href="#add">Add comment</a>
+                                    <a class="dropdown-item" href="#go">Go to appp</a>
                                   </div>
                                 </td>
                               </tr>

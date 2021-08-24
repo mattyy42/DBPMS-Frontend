@@ -76,7 +76,7 @@ class BoPlaningConsent extends Component {
                                 </div>{/* /.col */}
                                 <div className="col-sm-6">
                                     <ol className="breadcrumb float-sm-right">
-                                        <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li className="breadcrumb-item"><a href="#home">Home</a></li>
                                         <li className="breadcrumb-item active">Dashboard v1</li>
                                     </ol>
                                 </div>{/* /.col */}
@@ -212,8 +212,8 @@ class BoPlaningConsent extends Component {
                                 </div>
                                 {/* /.card-body */}
                                 <div className="card-footer clearfix">
-                                    <a href="javascript:void(0)" className="btn btn-sm btn-info float-left">Place New Order</a>
-                                    <a href="javascript:void(0)" className="btn btn-sm btn-secondary float-right">View All Orders</a>
+                                    <a href="#floating" className="btn btn-sm btn-info float-left">Place New Order</a>
+                                    <a href="#floating1" className="btn btn-sm btn-secondary float-right">View All Orders</a>
                                 </div>
                                 {/* /.card-footer */}
                             </div>

@@ -143,7 +143,7 @@ class Login extends Component {
                 <a href="forgot-password.html">I forgot my password</a>
               </p>
               <p className="mb-0">
-                <Link to="/register" > <a className="text-center">Register as New Applicant</a></Link>
+                <Link to="/register" > <a href="#register" className="text-center">Register as New Applicant</a></Link>
               </p>
             </div>
             {/* /.login-card-body */}

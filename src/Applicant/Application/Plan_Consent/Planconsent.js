@@ -150,7 +150,7 @@ export default class Planconsent extends Component {
           });
 
         }
-      });   
+      });
   };
 
 
@@ -175,7 +175,7 @@ export default class Planconsent extends Component {
                 </div>{/* /.col */}
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
-                    <li className="breadcrumb-item"><a href="#">Home</a></li>
+                    <li className="breadcrumb-item"><a href="#home">Home</a></li>
                     <li className="breadcrumb-item active">Get Started</li>
                   </ol>
                 </div>{/* /.col */}
@@ -262,7 +262,7 @@ export default class Planconsent extends Component {
 
                     <div className="form-group">
                       <label htmlFor="previous_service">previous service</label>
-                      <select className="form-control" name="previous_service" id="previous_service" defaultValue={this.state.selectValue} onChange={this.onChangehandler} required required>
+                      <select className="form-control" name="previous_service" id="previous_service" defaultValue={this.state.selectValue} onChange={this.onChangehandler} required>
                         <option value="New construction" >New construction</option>
                         <option value="Improvement / Expansion" >Improvement / Expansion</option>
                         <option value="Construction permit extension">Construction permit extension</option>
@@ -271,16 +271,13 @@ export default class Planconsent extends Component {
                     </div>
                     <div className="form-group">
                       <label htmlFor="type_of_construction">type_of_construction</label>
-                      <select className="form-control" name="type_of_construction" id="type_of_construction" defaultValue={this.state.selectValue} onChange={this.onChangehandler} required required>
+                      <select className="form-control" name="type_of_construction" id="type_of_construction" defaultValue={this.state.selectValue} onChange={this.onChangehandler} required>
                         <option value="New construction" >New construction</option>
                         <option value="Improvement / Expansion" >Improvement / Expansion</option>
                         <option value="Construction permit extension">Construction permit extension</option>
                       </select>
                     </div>
-                    {/* <div className="form-group">
-                        <label htmlFor="exampleInputsapplication_id"> Application Id</label>
-                        <input type="number"  className="form-control" id="application_id" name="application_id"  placeholder=" Enter Application ID" value={this.state.signupData.application_id} onChange={this.onChangehandler}  required />
-                      </div> */}
+
                     <div className="form-group">
                       <label htmlFor="exampleInputsapplication_issued_date"> Application Issued Date</label>
                       <input type="date" className="form-control" id="application_issued_date" name="application_issued_date" value={this.state.signupData.application_issued_date} onChange={this.onChangehandler} required />

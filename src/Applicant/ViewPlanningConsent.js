@@ -161,8 +161,8 @@ class ViewPlanningConsent extends Component {
                                 </div>
                                 {/* /.card-body */}
                                 <div className="card-footer clearfix">
-                                    <a href="javascript:void(0)" className="btn btn-sm btn-info float-left">Place New Order</a>
-                                    <a href="javascript:void(0)" className="btn btn-sm btn-secondary float-right">View All Orders</a>
+                                    <a href="#footer1" className="btn btn-sm btn-info float-left">Place New Order</a>
+                                    <a href="#footer" className="btn btn-sm btn-secondary float-right">View All Orders</a>
                                 </div>
                                 {/* /.card-footer */}
                             </div>

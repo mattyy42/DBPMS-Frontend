@@ -53,13 +53,13 @@ class SideBar extends Component {
                                 <img src="../dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="" />
                             </div>
                             <div className="info">
-                                <a href="#" className="d-block">{this.state.first_name} {this.state.last_name}</a>
+                                <a href="#info" className="d-block">{this.state.first_name} {this.state.last_name}</a>
                             </div>
                         </div>
                         <nav className="mt-2">
                             <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                 <li className="nav-item menu">
-                                    <a className="nav-link ">
+                                    <a href="#nav" className="nav-link ">
                                         <i className="nav-icon fas fa-file" />
                                         <p>complains
                                             <i className="right fas fa-angle-left" />
@@ -68,7 +68,7 @@ class SideBar extends Component {
                                     <ul className="nav nav-treeview">
                                         <Link to="/ba/viewMyComplain">
                                             <li className="nav-item">
-                                                <a className="nav-link">
+                                                <a href="#navlink" className="nav-link">
                                                     <i className="far fa-circle nav-icon" />
                                                     <p>view complains</p>
                                                 </a>
@@ -84,7 +84,7 @@ class SideBar extends Component {
 
                                 <Link to="/applicant/apply">
                                     <li className="nav-item">
-                                        <a className="nav-link">
+                                        <a href="#nav" className="nav-link">
                                             <i className="nav-icon fa fa-bell" />
                                             <p>
                                                 &#160; Notification
