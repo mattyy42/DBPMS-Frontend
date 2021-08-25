@@ -43,7 +43,7 @@ import LandingPage from './LandingPage';
 function Routes() {
     return (
         <>
-            {/* <Header /> */}
+           
             <Switch>
                 <Route exact path="/" render={props => (
                     <Redirect to={{ pathname: '/landing' }} />
@@ -63,7 +63,7 @@ function Routes() {
                 <AdminRoute exact path="/admin/bordEdit/:id" component={EditBoard} />
                 <AdminRoute exact path="/admin/manageBureau" component={ManageBureaus} />
                 <AdminRoute exact path="/admin/bureauAdd" component={AddBureau} />
-                <AdminRoute exact path="/admin/bureauEdit/:id" component={EditBureau} />)
+                <AdminRoute exact path="/admin/bureauEdit/:id" component={EditBureau} />
 
 
                 <ApplicantRoute exact path="/applicant" component={Fullpage} />
@@ -91,7 +91,7 @@ function Routes() {
                 <BuildingOfficerRoute path="/bo/applicationComment/:id" component={BoAddCommentApplication}/>
 
                 <BoaRoutes exact path="/ba/dashboard" component={BOAFirstpage} />
-                <BoaRoutes exact path="/profileBOA" component={profileBOA} />
+                <BoaRoutes exact path="/ba/profileBOA" component={profileBOA} />
                 <BoaRoutes path="/ba/viewMyComplain" component={ViewMyComplain} />
                 {/*Redirect if not authenticated */}
                 {/* <Guard path="/user" token="user-token" routeRedirect="/user/login" component={PrivateRoute} />  */}

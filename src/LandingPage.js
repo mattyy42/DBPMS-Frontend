@@ -31,13 +31,13 @@ class LandingPage extends Component {
                                         <div className="collapse navbar-collapse" id="navbarsExample04">
                                             <ul className="navbar-nav mr-auto">
                                                 <li className="nav-item active">
-                                                    <a className="nav-link" href="#">Home</a>
+                                                    <a className="nav-link" href="/#">Home</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" href="#"> About</a>
+                                                    <a className="nav-link" href="/#"> About</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" href="#service"> Service</a>
+                                                    <a className="nav-link" href="/#"> Service</a>
                                                 </li>
                                                 <li className="nav-item">
                                                     <a className="nav-link" href="/register">Register</a>

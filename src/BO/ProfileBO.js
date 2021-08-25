@@ -1,8 +1,84 @@
 import React, { Component } from 'react'
 import SideBar from './SideBar'
 import Header from '../Applicant/Header'
+import axios from 'axios';
+import Swal from "sweetalert2";
 class ProfileBO extends Component {
+    constructor(props) {
+        super(props);
+        this.HandleClick = this.HandleClick.bind(this);
+        this.state = {
+            signupData: {
+                first_name: "",
+                last_name: "",
+                email: "",
+                password: "",
+                password_confirmation: "",
+                phone_number: "",
+                isLoading: "",
+            },
+            msg: "",
+        };
+    }
+    HandleClick() {
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfully updated profile',
+        });
+    }
+
+    onChangehandler = (e, key) => {
+        const { signupData } = this.state;
+        signupData[e.target.name] = e.target.value;
+        this.setState({ signupData });
+    };
+    onSubmitHandler = (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+        this.setState({ isLoading: true });
+        console.log(this.state.signupData)
+        axios
+            .put("http://localhost:8000/api/user/profileChange", this.state.signupData, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            }).then((response) => {
+                this.setState({ isLoading: false });
+                if (response.status === 200) {
+                    this.HandleClick();
+                    this.setState({
+                        msg: response.message,
+                        signupData: {
+                            first_name: "",
+                            last_name: "",
+                            email: "",
+                            password: "",
+                            phone_number: "",
+                        },
+                    });
+
+                    setTimeout(() => {
+                        this.setState({ msg: "" });
+                    }, 2000);
+                    this.setState({
+                        msg: response.msg,
+                        redirect: true,
+                    });
+                }
+
+                if (response.status === "failed") {
+                    this.setState({ msg: response.msg });
+                    setTimeout(() => {
+                        this.setState({ msg: "" });
+                    }, 2000);
+                }
+            });
+    };
+
     render() {
+        const isLoading = this.state.isLoading;
         return (
 
             <div>
@@ -16,12 +92,7 @@ class ProfileBO extends Component {
                                 <div className="col-sm-6">
                                     <h1>Profile</h1>
                                 </div>
-                                <div className="col-sm-6">
-                                    <ol className="breadcrumb float-sm-right">
-                                        <li className="breadcrumb-item"><a href="/bo/dashboard">Home</a></li>
-                                        <li className="breadcrumb-item active">User Profile</li>
-                                    </ol>
-                                </div>
+
                             </div>
                         </div>{/* /.container-fluid */}
                     </section>
@@ -29,248 +100,85 @@ class ProfileBO extends Component {
                     <section className="content">
                         <div className="container-fluid">
                             <div className="row">
-                                <div className="col-md-3">
-                                    {/* Profile Image */}
-                                    <div className="card card-primary card-outline">
-                                        <div className="card-body box-profile">
-                                            <div className="text-center">
-                                                <img className="profile-user-img img-fluid img-circle" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="" />
-                                            </div>
-                                            <h3 className="profile-username text-center">witness matiwos </h3>
-                                            <p className="text-muted text-center">Building officer</p>
-
-                                        </div>
-                                        {/* /.card-body */}
-                                    </div>
-                                    {/* /.card */}
-                                    {/* About Me Box */}
+                                {/* left column */}
+                                <div className="col-md-12">
+                                    {/* general form elements */}
                                     <div className="card card-primary">
                                         <div className="card-header">
-                                            <h3 className="card-title">About </h3>
+                                            <h3 style={{ color: "white" }} className="card-title">Fill the form to change the profile</h3>
                                         </div>
                                         {/* /.card-header */}
-                                        <div className="card-body">
-                                            <strong><i className="fas fa-book mr-1" /> Education</strong>
-                                            <p className="text-muted">
-                                                Civil engieener
-                 </p>
-                                            <hr />
-                                            <strong><i className="fas fa-map-marker-alt mr-1" /> Location</strong>
-                                            <p className="text-muted">adama, Ethiopia</p>
-                                            <hr />
-                                            <strong><i className="fas fa-pencil-alt mr-1" /> Skills</strong>
-                                            <p className="text-muted">
-                                                <span className="tag tag-danger">UI Design</span>
-                                                <span className="tag tag-success">Coding</span>
-                                                <span className="tag tag-info">Javascript</span><br />
-                                                <span className="tag tag-warning">PHP</span><br />
-                                                <span className="tag tag-primary">Node.js</span>
-                                            </p>
-                                            <hr />
-                                            <strong><i className="far fa-file-alt mr-1" /> Notes</strong>
-                                            <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                                        </div>
-                                        {/* /.card-body */}
-                                    </div>
-                                    {/* /.card */}
-                                </div>
-                                {/* /.col */}
-                                <div className="col-md-9">
-                                    <div className="card">
-                                        <div className="card-header p-2">
-                                            <ul className="nav nav-pills">
-                                                <li className="nav-item"><a className="nav-link active" href="#activity" data-toggle="tab">Personal information</a></li>
-
-                                            </ul>
-                                        </div>{/* /.card-header */}
-                                        <div className="card-body">
-                                            <div className="tab-content">
-                                                <div className="active tab-pane" id="activity">
-                                                    {/* Post */}
-                                                    <div className="post">
-                                                        <div className="user-block">
-                                                            <img className="img-circle img-bordered-sm" src="../../dist/img/photo_2018-12-13_21-40-22.jpg" alt="" />
-                                                            <span className="username">
-                                                                <a href="#witness">witness matiwos</a>
-                                                                <a href="#fas" className="float-right btn-tool"><i className="fas fa-times" /></a>
-                                                            </span>
-
-                                                        </div>
-                                                        {/* /.user-block */}
-                                                        <p>
-                                                            Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore the hate as they create awesome
-                                                            tools to help create filler text for everyone from bacon lovers
-                                                            to Charlie Sheen fans.
-                      </p>
-                                                        <p>
-
-
-                                                            <span className="float-right">
-                                                                <a href="#float" className="link-black text-sm">
-
-                                                                </a>
-                                                            </span>
-                                                        </p>
-                                                        <input className="form-control form-control-sm" type="text" placeholder="edit profile" />
-                                                        <button type="submit" className="btn btn-danger">Post</button>
-                                                    </div>
-                                                    {/* /.post */}
-                                                    {/* Post */}
-                                                    {/* /.post */}
-                                                    {/* Post */}
-
-                                                    {/* /.post */}
-                                                </div>
-                                                {/* /.tab-pane */}
-                                                <div className="tab-pane" id="timeline">
-                                                    {/* The timeline */}
-                                                    <div className="timeline timeline-inverse">
-                                                        {/* timeline time label */}
-                                                        <div className="time-label">
-                                                            <span className="bg-danger">
-                                                                10 Feb. 2014
-                        </span>
-                                                        </div>
-                                                        {/* /.timeline-label */}
-                                                        {/* timeline item */}
-                                                        <div>
-                                                            <i className="fas fa-envelope bg-primary" />
-                                                            <div className="timeline-item">
-                                                                <span className="time"><i className="far fa-clock" /> 12:05</span>
-                                                                <h3 className="timeline-header"><a href="#support">Support Team</a> sent you an email</h3>
-                                                                <div className="timeline-body">
-                                                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                                                    quora plaxo ideeli hulu weebly balihoo...
-                          </div>
-                                                                <div className="timeline-footer">
-                                                                    <a href="#read" className="btn btn-primary btn-sm">Read more</a>
-                                                                    <a href="#delete" className="btn btn-danger btn-sm">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {/* END timeline item */}
-                                                        {/* timeline item */}
-                                                        <div>
-                                                            <i className="fas fa-user bg-info" />
-                                                            <div className="timeline-item">
-                                                                <span className="time"><i className="far fa-clock" /> 5 mins ago</span>
-                                                                <h3 className="timeline-header border-0"><a href="#sarah">Sarah Young</a> accepted your friend request
-                          </h3>
-                                                            </div>
-                                                        </div>
-                                                        {/* END timeline item */}
-                                                        {/* timeline item */}
-                                                        <div>
-                                                            <i className="fas fa-comments bg-warning" />
-                                                            <div className="timeline-item">
-                                                                <span className="time"><i className="far fa-clock" /> 27 mins ago</span>
-                                                                <h3 className="timeline-header"><a href="#Jay">Jay White</a> commented on your post</h3>
-                                                                <div className="timeline-body">
-                                                                    Take me to your leader!
-                                                                    Switzerland is small and neutral!
-                                                                    We are more like Germany, ambitious and misunderstood!
-                          </div>
-                                                                <div className="timeline-footer">
-                                                                    <a href="#viewCo" className="btn btn-warning btn-flat btn-sm">View comment</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {/* END timeline item */}
-                                                        {/* timeline time label */}
-                                                        <div className="time-label">
-                                                            <span className="bg-success">
-                                                                3 Jan. 2014
-                        </span>
-                                                        </div>
-                                                        {/* /.timeline-label */}
-                                                        {/* timeline item */}
-                                                        <div>
-                                                            <i className="fas fa-camera bg-purple" />
-                                                            <div className="timeline-item">
-                                                                <span className="time"><i className="far fa-clock" /> 2 days ago</span>
-                                                                <h3 className="timeline-header"><a href="#Mina">Mina Lee</a> uploaded new photos</h3>
-                                                                <div className="timeline-body">
-                                                                    <img src="https://placehold.it/150x100" alt="..." />
-                                                                    <img src="https://placehold.it/150x100" alt="..." />
-                                                                    <img src="https://placehold.it/150x100" alt="..." />
-                                                                    <img src="https://placehold.it/150x100" alt="..." />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {/* END timeline item */}
-                                                        <div>
-                                                            <i className="far fa-clock bg-gray" />
-                                                        </div>
+                                        {/* form start */}
+                                        <form>
+                                            <div className="input-group mb-3">
+                                                <input type="text" className="form-control" name="first_name" placeholder="First name" value={this.state.signupData.first_name} onChange={this.onChangehandler} />
+                                                <div className="input-group-append">
+                                                    <div className="input-group-text">
+                                                        <span className="fas fa-user" />
                                                     </div>
                                                 </div>
-                                                {/* /.tab-pane */}
-                                                <div className="tab-pane" id="settings">
-                                                    <form className="form-horizontal">
-                                                        <div className="form-group row">
-                                                            <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
-                                                            <div className="col-sm-10">
-                                                                <input type="email" className="form-control" id="inputName" placeholder="Name" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group row">
-                                                            <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
-                                                            <div className="col-sm-10">
-                                                                <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group row">
-                                                            <label htmlFor="inputName2" className="col-sm-2 col-form-label">Name</label>
-                                                            <div className="col-sm-10">
-                                                                <input type="text" className="form-control" id="inputName2" placeholder="Name" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group row">
-                                                            <label htmlFor="inputExperience" className="col-sm-2 col-form-label">Experience</label>
-                                                            <div className="col-sm-10">
-                                                                <textarea className="form-control" id="inputExperience" placeholder="Experience" defaultValue={""} />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group row">
-                                                            <label htmlFor="inputSkills" className="col-sm-2 col-form-label">Skills</label>
-                                                            <div className="col-sm-10">
-                                                                <input type="text" className="form-control" id="inputSkills" placeholder="Skills" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group row">
-                                                            <div className="offset-sm-2 col-sm-10">
-                                                                <div className="checkbox">
-                                                                    <label>
-                                                                        <input type="checkbox" /> I agree to the <a href="#terms">terms and conditions</a>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group row">
-                                                            <div className="offset-sm-2 col-sm-10">
-                                                                <button type="submit" className="btn btn-danger">Submit</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                {/* /.tab-pane */}
                                             </div>
-                                            {/* /.tab-content */}
-                                        </div>{/* /.card-body */}
+                                            <div className="input-group mb-3">
+                                                <input type="text" className="form-control" name="last_name" placeholder="Last name" value={this.state.signupData.last_name} onChange={this.onChangehandler} />
+                                                <div className="input-group-append">
+                                                    <div className="input-group-text">
+                                                        <span className="fas fa-user" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="input-group mb-3">
+                                                <input type="email" className="form-control" name="email" placeholder="Email" value={this.state.signupData.email} onChange={this.onChangehandler} />
+                                                <div className="input-group-append">
+                                                    <div className="input-group-text">
+                                                        <span className="fas fa-envelope" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="input-group mb-3">
+                                                <input type="password" className="form-control" name="password" placeholder="Password" value={this.state.signupData.password} onChange={this.onChangehandler} />
+                                                <div className="input-group-append">
+                                                    <div className="input-group-text">
+                                                        <span className="fas fa-lock" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="input-group mb-3">
+                                                <input type="password" className="form-control" name="password_confirmation" placeholder="confirm password" value={this.state.signupData.password_confirmation} onChange={this.onChangehandler} />
+                                                <div className="input-group-append">
+                                                    <div className="input-group-text">
+                                                        <span className="fas fa-lock" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="input-group mb-3">
+                                                <input type="tel" className="form-control" name="phone_number" placeholder="Phone number" value={this.state.signupData.phone_number} onChange={this.onChangehandler} />
+                                                <div className="input-group-append">
+                                                    <div className="input-group-text">
+                                                        <span className="fas fa-user" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <button onClick={this.onSubmitHandler} type="submit" class="btn btn-primary">Submit{isLoading ? (
+                                                    <span
+                                                        className="spinner-border spinner-border-sm"
+                                                        role="status"
+                                                        aria-hidden="true"
+                                                    ></span>
+                                                ) : (
+                                                        <span></span>
+                                                    )}</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    {/* /.card */}
-                                </div>
-                                {/* /.col */}
-                            </div>
-                            {/* /.row */}
-                        </div>{/* /.container-fluid */}
-                    </section>
+                                </div></div></div></section>
+
+                    {/* /.content */}
+
                     {/* /.content */}
                 </div>
-            </div>
+            </div >
 
 
 

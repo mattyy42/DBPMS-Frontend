@@ -73,14 +73,8 @@ class SideBar extends Component {
                                                 </a>
                                             </li>
                                         </Link>
-
-
-
                                     </ul>
                                 </li>
-
-
-
                                 <Link to="/applicant/apply">
                                     <li className="nav-item">
                                         <a href="#nav" className="nav-link">
@@ -95,7 +89,7 @@ class SideBar extends Component {
 
 
                                 <li className="nav-item">
-                                    <a href="pages/gallery.html" className="nav-link">
+                                    <a href="/ba/profileBOA" className="nav-link">
                                         <i className="nav-icon fa fa-user" />
                                         <p>
                                             Edit Profile
