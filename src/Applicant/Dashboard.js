@@ -5,6 +5,9 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       applications: [],
+      rejected: [],
+      accepted: [],
+      pend: [],
     }
   }
   componentDidMount() {
@@ -17,16 +20,17 @@ class Dashboard extends Component {
           console.log('hey');
         }
         this.setState({
-         
           applications: response.data.data,
-          // building_officer: response.data.buildingOfficer,
+          rejected: response.data.data.filter(data => data.application_stutus === 2),
+          accepted: response.data.data.filter(data => data.application_stutus === 1),
+          pend: response.data.data.filter(data => data.application_stutus === 0),
         })
-        
+
       })
-      
+
   }
   render() {
-    const { applications } = this.state;
+    const { applications,accepted,pend,rejected } = this.state;
     return (
       <div>
         <div className="content-wrapper">
@@ -58,7 +62,7 @@ class Dashboard extends Component {
                     <div className="info-box-content">
                       <span className="info-box-text">Applications</span>
                       <span className="info-box-number">
-                        10
+                        {applications.length}
                         <small> Total</small>
                       </span>
                     </div>
@@ -72,7 +76,7 @@ class Dashboard extends Component {
                     <span className="info-box-icon bg-danger elevation-1"><i className="fas fa-ban" /></span>
                     <div className="info-box-content">
                       <span className="info-box-text">Rejected</span> <span className="info-box-number">
-                        10
+                       {rejected.length}
                         <small> Total</small>
                       </span>
                     </div>
@@ -88,7 +92,7 @@ class Dashboard extends Component {
                     <span className="info-box-icon bg-success elevation-1"><i className="fas fa-thumbs-up" /></span>
                     <div className="info-box-content">
                       <span className="info-box-text">Accepted</span>
-                      <span className="info-box-number">760</span>
+                      <span className="info-box-number">{accepted.length}</span>
                     </div>
                     {/* /.info-box-content */}
                   </div>
@@ -98,7 +102,7 @@ class Dashboard extends Component {
                     <span className="info-box-icon bg-warning elevation-1"><i className="fa fa-exclamation" /></span>
                     <div className="info-box-content">
                       <span className="info-box-text">Pending</span>
-                      <span className="info-box-number">2,000</span>
+                      <span className="info-box-number">{pend.length}</span>
                     </div>
                     {/* /.info-box-content */}
                   </div>
@@ -139,7 +143,7 @@ class Dashboard extends Component {
                             <td >{application.bureau}</td>
                             {/* <td >{application.appointment.appointment_time}</td> */}
                           </tr>
-                          )}
+                        )}
                       </tbody>
                     </table>
                   </div>
