@@ -35,8 +35,8 @@ export default class Applicationform extends Component {
         revitFile:"",
       },
     };
-    this.onChange = this.onChange.bind(this);
-    this.createImage=this.createImage.bind(this);
+    // this.onChange = this.onChange.bind(this);
+    
   }
   HandleClick() {
     Swal.fire({

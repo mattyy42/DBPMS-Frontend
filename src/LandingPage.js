@@ -75,7 +75,7 @@ class LandingPage extends Component {
                             </div>
                             <div className="col-md-7">
                                 <div className="text-img">
-                                    <figure><img src="images/img.png" /></figure>
+                                    <figure><img src="style.images/img.png" /></figure>
                                 </div>
                             </div>
                         </div>
