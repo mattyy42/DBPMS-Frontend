@@ -113,7 +113,9 @@ class Sidebar extends Component {
                                                     <p>Manage Accounts</p>
                                                 </a>
                                             </li>
+                                            
                                         </Link>
+                                        
 
 
                                     </ul>
@@ -177,6 +179,15 @@ class Sidebar extends Component {
                                         </p>
                                     </a>
                                 </li>
+                                <Link to="/add/post">
+                                            <li className="nav-item">
+                                                <a className="nav-link" href="#account">
+                                                    <i className="far-bookmark-o nav-icon" />
+                                                    <p>Manage Posts</p>
+                                                </a>
+                                            </li>
+                                            
+                                        </Link>
 
 
 

@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-
+import axios from "axios";
+import { Redirect } from "react-router-dom";
+import { Link } from 'react-router-dom';
 class LandingPage extends Component {
+  
+
     render() {
+       // const { identifier,Post} = this.state;
         return (
             <div>
                 <div className="loader_bg">
@@ -64,7 +69,7 @@ class LandingPage extends Component {
                                     <h1>Digital Building Permit System</h1>
                                     <span>Welocome to A.A city Administration Digital building permit system</span>
                                     <p>This journey details the process that a business goes through in order to construct a commercial building premise, ranging from land authentication to acquiring necessary consents and permits, to final inspection once the construction is complete. Government organizations involved in this journey to provide the required services are as follows; Addis Ababa city administration land holding registration and information agency, Addis Ababa city adminstration
-              construction permit and control authority and Addis Ababa water and sewerage authority.</p>
+                                        construction permit and control authority and Addis Ababa water and sewerage authority.</p>
                                     <a href="#">Get Started</a>
                                 </div>
                             </div>
@@ -92,7 +97,7 @@ class LandingPage extends Component {
                                 <div className="web_hosting">
                                     <figure><img src="images/web.jpg" alt="#" /></figure>
                                     <p> one-stop portal for e-government services that improves ease of doing business in Ethiopia through
-              the automation of essential government services leveraging information and communication technologies</p>
+                                        the automation of essential government services leveraging information and communication technologies</p>
                                     <a href="#">Read more</a>
                                 </div>
                             </div>
@@ -108,12 +113,13 @@ class LandingPage extends Component {
                                 <div className="titlepage">
                                     <h2>Process Overview</h2>
                                     <p>Addis Ababa city administration land holding registration and information agency, Addis Ababa city adminstration constru
-                                    ction permit and control authority and Addis Ababa water and sewerage authority.
-            </p>
+                                        ction permit and control authority and Addis Ababa water and sewerage authority.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
+                        
                             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                                 <div className="Services-box">
                                     <i><img src="images/service1.png" alt="#" /></i>
@@ -125,8 +131,8 @@ class LandingPage extends Component {
                                     <i><img src="images/service2.png" alt="#" /></i>
                                     <h3>Land Authentication</h3>
                                     <p>The business representative provides a debt provision document
-                                    to verify that the land is not registered as collateral, and a neighbor c
-              onsent</p>
+                                        to verify that the land is not registered as collateral, and a neighbor c
+                                        onsent</p>
                                     <p />
                                 </div>
                             </div>
@@ -135,7 +141,7 @@ class LandingPage extends Component {
                                     <i><img src="images/service3.png" alt="#" /></i>
                                     <h3>Construction Permit</h3>
                                     <p>In this process, the business representative
-              or the design consultant submits all the necessary design documents for approval subsequently and once the designs are approved the city</p>
+                                        or the design consultant submits all the necessary design documents for approval subsequently and once the designs are approved the city</p>
                                 </div>
                             </div>
                             {/* <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -175,8 +181,8 @@ class LandingPage extends Component {
                                     <div className="cont">
                                         <h3>Contact now</h3>
                                         <p>+(251)-11-12649942490 In the compound of old ERPA Building,
-                                        Arada Subcity, Behind Lycee G / Mariam School, Churchill Road Addis Ababa, Ethiopia
-              </p>
+                                            Arada Subcity, Behind Lycee G / Mariam School, Churchill Road Addis Ababa, Ethiopia
+                                        </p>
                                     </div>
                                 </div>
                             </div>

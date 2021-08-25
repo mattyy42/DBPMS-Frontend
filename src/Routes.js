@@ -40,6 +40,7 @@ import Unauthorized from './Unauthorized';
 import ShowComplain from './Applicant/complain/ShowComplain';
 import EditComplain from './Applicant/complain/EditComplain';
 import LandingPage from './LandingPage';
+import Portal_grid_post from './admin/Portal_grid_post';
 function Routes() {
     return (
         <>
@@ -54,6 +55,7 @@ function Routes() {
                 <Route exact path="/landing" component={LandingPage}/>
 
                 <AdminRoute exact path="/admin" component={Firstpage} />
+                <AdminRoute exact path="/add/post" component={Portal_grid_post} />
                 <AdminRoute exact path="/admin/registerBO" component={RegisterBO} />
                 <AdminRoute exact path="/admin/officer" component={ShowTableBO} />
                 <AdminRoute exact path="/admin/edit/:id" component={EditBO} />
