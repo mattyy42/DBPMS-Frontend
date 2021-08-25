@@ -33,7 +33,6 @@ class Sidebar extends Component {
                 })
 
             })
-
     }
     render() {
         return (
@@ -111,26 +110,24 @@ class Sidebar extends Component {
                                                 <p>View Complain</p>
                                             </a>
                                         </li>
-
-
                                     </ul>
                                 </li>
 
-                                <Link to="/applicant/apply">
-                                    <li className="nav-item">
+
+                                {/* <li className="nav-item">
                                         <a href="/#" className="nav-link">
                                             <i className="nav-icon fa fa-bell" />
                                             <p>
                                                 &#160; Notification
-                                                {/* <span className="right badge badge-danger">New</span> */}
+                                              
                                             </p>
                                         </a>
-                                    </li>
-                                </Link>
+                                    </li> */}
+
 
 
                                 <li className="nav-item">
-                                    <a href="pages/gallery.html" className="nav-link">
+                                    <a href="/applicant/profile" className="nav-link">
                                         <i className="nav-icon fa fa-user" />
                                         <p>
                                             Edit Profile

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 class LandingPage extends Component {
     render() {
         return (
@@ -65,12 +64,12 @@ class LandingPage extends Component {
                                     <span>Welocome to A.A city Administration Digital building permit system</span>
                                     <p>This journey details the process that a business goes through in order to construct a commercial building premise, ranging from land authentication to acquiring necessary consents and permits, to final inspection once the construction is complete. Government organizations involved in this journey to provide the required services are as follows; Addis Ababa city administration land holding registration and information agency, Addis Ababa city adminstration
               construction permit and control authority and Addis Ababa water and sewerage authority.</p>
-                                    <a href="#">Get Started</a>
+                                    <a href="/#get">Get Started</a>
                                 </div>
                             </div>
                             <div className="col-md-7">
                                 <div className="text-img">
-                                    <figure><img src="images/img.png" /></figure>
+                                    <figure><img src="style.images/img.png" /></figure>
                                 </div>
                             </div>
                         </div>

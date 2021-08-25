@@ -91,7 +91,7 @@ class ShowComplain extends Component {
                                                 <td >{Complain.complain}</td>
                                                 <td >{Complain.board.first_name}</td>
                                                 <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
-                                                <td ><a href="/#ed" type="button" class="btn btn-block btn-outline-warning btn-xs">Edit</a></td>
+                                                <td ><a href={`/applicant/editComlain/${Complain.id}`} type="button" class="btn btn-block btn-outline-warning btn-xs">Edit</a></td>
                                                 <td ><a href="#" onClick={this.removeData.bind(this, Complain.id)} type="button" class="btn btn-block btn-outline-danger btn-xs">Delete</a></td>
                                             </tr>
                                         )}

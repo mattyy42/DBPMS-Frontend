@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Sidebar from '../Sidebar'
 import Header from '../Header'
+import axios from 'axios';
+import Swal from 'sweetalert2';
 class EditComplain extends Component {
     constructor(props) {
         super(props);
@@ -15,11 +17,73 @@ class EditComplain extends Component {
 
     }
     componentDidMount() {
+        const tokenString = localStorage.getItem('token');
         const { id } = this.props.match.params;
+        axios.get(`http://127.0.0.1:8000/api/applicant/complainView/${id}`, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${tokenString}`
+            }
+        }).then(
+            (response) => {
+                this.setState({
+                    complainData: response.data.data,
+                })
+            }
+        );
+
         this.setState({
             id: id
         })
 
+    }
+    onChangehandler = (e, key) => {
+        const { complainData } = this.state;
+        complainData[e.target.name] = e.target.value;
+        this.setState({ complainData });
+    };
+    onSubmitHandler = (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+        this.setState({ isLoading: true });
+
+        axios.post(`http://127.0.0.1:8000/api/applicant/submitComplain/${this.state.id}`, this.state.complainData, {
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((response) => {
+            if (response.status === 201) {
+                Swal.fire({
+                    title: 'Success',
+                    type: 'success',
+                    text: 'Complain successfully submitted',
+                });
+
+            }
+            if (response.status === 200) {
+                Swal.fire({
+                    title: 'Failed',
+                    type: 'failed',
+                    text: response.data.complain,
+                });
+            }
+
+        }).catch((err) => {
+            //handle error
+            if (err.response.status === 422) {
+                Swal.fire({
+                    title: 'Failed',
+                    type: 'success',
+                    text: err.response.data.errors.complain,
+                });
+            }
+        });
+        this.setState({
+            complainData: {
+                complain: ""
+            }
+        });
     }
     render() {
         return (

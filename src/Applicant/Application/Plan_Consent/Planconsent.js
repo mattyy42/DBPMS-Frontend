@@ -272,10 +272,7 @@ export default class Planconsent extends Component {
                     <div className="form-group">
                       <label htmlFor="type_of_construction">type_of_construction</label>
                       <select className="form-control" name="type_of_construction" id="type_of_construction" defaultValue={this.state.selectValue} onChange={this.onChangehandler} required>
-                        <option value="New construction" >Residential Building. ...
-
-
-</option>
+                        <option value="New construction" >Residential Building. ...</option>
                         <option value="Improvement / Expansion" >Institutional and Commercial Building</option>
                         <option value="Construction permit extension">Specialized Industrial Construction</option>
                         <option value="Construction permit extension">Infrastructure and Heavy Construction</option>
