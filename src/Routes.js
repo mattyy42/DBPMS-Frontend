@@ -25,6 +25,10 @@ import ManageBureaus from './admin/Bureau/ManageBureaus';
 import AddBureau from './admin/Bureau/AddBureau';
 import ProfileBO from './BO/ProfileBO';
 import BoPlaningConsent from './BO/BoPlaningConsent'
+import BoAddComment from './BO/BoAddComment'
+import BoApplication from './BO/BoApplication';
+import BoAddCommentApplication from './BO/BoAddCommentApplicatin';
+
 import EditBureau from './admin/Bureau/EditBureau';
 import Thanksforsubmitingpc from './Applicant/Thanksforsubmitingpc';
 import Submitcomplain from './Applicant/Submitcomplain';
@@ -35,17 +39,19 @@ import AdminRoute from './AdminRoute';
 import Unauthorized from './Unauthorized';
 import ShowComplain from './Applicant/complain/ShowComplain';
 import EditComplain from './Applicant/complain/EditComplain';
+import LandingPage from './LandingPage';
 function Routes() {
     return (
         <>
             {/* <Header /> */}
             <Switch>
                 <Route exact path="/" render={props => (
-                    <Redirect to={{ pathname: '/login' }} />
+                    <Redirect to={{ pathname: '/landing' }} />
                 )} />
                 {/* <Route path="/home" component={Home} /> */}
 
                 {/* Admin Route */}
+                <Route exact path="/landing" component={LandingPage}/>
 
                 <AdminRoute exact path="/admin" component={Firstpage} />
                 <AdminRoute exact path="/admin/registerBO" component={RegisterBO} />
@@ -78,11 +84,14 @@ function Routes() {
                 <Route path="/unauthorized" component={Unauthorized} />
 
                 <BuildingOfficerRoute exact path="/bo/dashboard" component={BOFirstPage} />
-                <BuildingOfficerRoute path="/profileBO" component={ProfileBO} />
+                <BuildingOfficerRoute exact path="/profileBO" component={ProfileBO} />
                 <BuildingOfficerRoute path="/bo/planingConsent" component={BoPlaningConsent} />
+                <BuildingOfficerRoute path="/bo/addComment/:id" component={BoAddComment}/>
+                <BuildingOfficerRoute path="/bo/lookApplication" component={BoApplication}/> 
+                <BuildingOfficerRoute path="/bo/applicationComment/:id" component={BoAddCommentApplication}/>
 
                 <BoaRoutes exact path="/ba/dashboard" component={BOAFirstpage} />
-                <BoaRoutes path="/profileBOA" component={profileBOA} />
+                <BoaRoutes exact path="/profileBOA" component={profileBOA} />
                 <BoaRoutes path="/ba/viewMyComplain" component={ViewMyComplain} />
                 {/*Redirect if not authenticated */}
                 {/* <Guard path="/user" token="user-token" routeRedirect="/user/login" component={PrivateRoute} />  */}

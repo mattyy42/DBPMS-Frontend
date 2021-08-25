@@ -21,13 +21,13 @@ class RegisterBoard extends Component {
             allBureau: []
         };
     }
-    HandleClick() {  
-        Swal.fire({  
-          title: 'Success',  
-          type: 'success',  
-          text: 'successfuly Registered Board of appliance ,We will inform the user to know soon',  
-        });  
-      }
+    HandleClick() {
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfuly Registered Board of appliance ,We will inform the user to know soon',
+        });
+    }
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/getAllBureau').then(
             (response) => {
@@ -64,11 +64,7 @@ class RegisterBoard extends Component {
                         },
                     });
 
-                    // MySwal.fire(
-                    //     'Good job!',
-                    //     'You clicked the button!',
-                    //     'success'
-                    //   )
+
                     setTimeout(() => {
                         this.setState({ msg: "" });
                     }, 2000);
@@ -78,12 +74,7 @@ class RegisterBoard extends Component {
                     });
                 }
 
-                if (response.status === "failed") {
-                    this.setState({ msg: response.msg });
-                    setTimeout(() => {
-                        this.setState({ msg: "" });
-                    }, 2000);
-                }
+
             });
     };
     render() {
@@ -125,7 +116,7 @@ class RegisterBoard extends Component {
                                             <div className="card-body">
                                                 <div className="form-group">
                                                     <label htmlFor="firstInput">Enter first name</label>
-                                                    <input type="text" name="first_name" className="form-control" id="firstInput" placeholder="Enter first name"value={this.state.signupData.first_name} onChange={this.onChangehandler}  />
+                                                    <input type="text" name="first_name" className="form-control" id="firstInput" placeholder="Enter first name" value={this.state.signupData.first_name} onChange={this.onChangehandler} />
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="lastInput">Enter last name</label>
@@ -143,14 +134,13 @@ class RegisterBoard extends Component {
                                                     <label htmlFor="exampleInputPassword1">Password</label>
                                                     <input type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={this.state.signupData.password} onChange={this.onChangehandler} />
                                                 </div>
-                                              
+
                                                 <div className="form-group">
                                                     <label htmlFor="bureau">Bureau</label>
                                                     <select name="bureau" onChange={this.onChangehandler} className="custom-select">
                                                         <option value="">Select Bureau</option>
                                                         {this.state.allBureau.map((bureau) => (
-
-                                                            <option value={bureau.Bureau}>{bureau.subcity}</option>
+                                                            <option value={bureau.bureau}>{bureau.subcity}</option>
                                                         ))}
 
                                                     </select>

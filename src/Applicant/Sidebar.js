@@ -61,64 +61,64 @@ class Sidebar extends Component {
                                         </p>
                                     </a>
                                     <ul className="nav nav-treeview">
-                                        <Link to="/applicant/getstarted">
-                                            <li className="nav-item">
-                                                <a className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Get Started</p>
-                                                </a>
-                                            </li>
-                                        </Link>
-                                        <Link to="/applicant/viewPc">
-                                            <li className="nav-item">
-                                                <a className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>View My Planning Consent</p>
-                                                </a>
-                                            </li>
-                                        </Link>
-                                        <Link to="/applicant/view">
-                                            <li className="nav-item">
-                                                <a className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>View My application</p>
-                                                </a>
-                                            </li>
-                                        </Link>
-                                        <Link to="/applicant/apply">
-                                            <li className="nav-item">
-                                                <a className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Track My Applications</p>
-                                                </a>
-                                            </li></Link>
+
+                                        <li className="nav-item">
+                                            <a href="/applicant/getstarted" className="nav-link" >
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>Get Started</p>
+                                            </a>
+                                        </li>
+
+
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/applicant/viewPc">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>View My Planning Consent</p>
+                                            </a>
+                                        </li>
+
+
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/applicant/view">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>View My application</p>
+                                            </a>
+                                        </li>
+
+
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/applicant/apply">
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>Track My Applications</p>
+                                            </a>
+                                        </li>
 
                                     </ul>
                                 </li>
 
                                 <li className="nav-item menu">
-                                    <a className="nav-link ">
+                                    <a className="nav-link " href="/#">
                                         <i className="nav-icon fas fa-file" />
                                         <p>My Complain
                                             <i className="right fas fa-angle-left" />
                                         </p>
                                     </a>
                                     <ul className="nav nav-treeview">
-                                        <Link to="/applicant/viewComplain">
-                                            <li className="nav-item">
-                                                <a className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>View Complain</p>
-                                                </a>
-                                            </li>
-                                        </Link>
+
+                                        <li className="nav-item">
+                                            <a href="/applicant/viewComplain" className="nav-link" >
+                                                <i className="far fa-circle nav-icon" />
+                                                <p>View Complain</p>
+                                            </a>
+                                        </li>
+
 
                                     </ul>
                                 </li>
 
                                 <Link to="/applicant/apply">
                                     <li className="nav-item">
-                                        <a className="nav-link">
+                                        <a href="/#" className="nav-link">
                                             <i className="nav-icon fa fa-bell" />
                                             <p>
                                                 &#160; Notification

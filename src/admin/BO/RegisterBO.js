@@ -47,7 +47,7 @@ class RegisterBO extends Component {
         e.preventDefault();
         this.setState({ isLoading: true });
         axios
-            .post("http://localhost:8000/api/admin/registerBuildingOfficer", this.state.signupData)
+            .post("http://127.0.0.1:8000/api/admin/registerBuildingOfficer", this.state.signupData)
             .then((response) => {
                 this.setState({ isLoading: false });
                 if (response.status === 201) {
@@ -72,13 +72,6 @@ class RegisterBO extends Component {
                         msg: response.msg,
                         redirect: true,
                     });
-                }
-
-                if (response.status === "failed") {
-                    this.setState({ msg: response.msg });
-                    setTimeout(() => {
-                        this.setState({ msg: "" });
-                    }, 2000);
                 }
             });
     };
@@ -139,23 +132,16 @@ class RegisterBO extends Component {
                                                     <label htmlFor="exampleInputPassword1">Password</label>
                                                     <input type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={this.state.signupData.password} onChange={this.onChangehandler} />
                                                 </div>
-                                                {/* <div className="form-group">
-                                                    <label htmlFor="roleInput">Role</label>
-                                                    <select name="role" onChange={this.onChangehandler} className="custom-select">
-                                                        <option value="">Select Role</option>
-                                                        <option value="BO">Building Officer</option>
-                                                    </select>
-                                                </div> */}
+
                                                 <dive className="form-group">
                                                     <input type="hidden" name="role" value="BO" />
                                                 </dive>
                                                 <div className="form-group">
                                                     <label htmlFor="bureau">Bureau</label>
-                                                    <select name="bureau" onChange={this.onChangehandler} className="custom-select">
-                                                        <option value="">Select Bureau</option>
+                                                    <select name="bureau" onChange={this.onChangehandler} className="custom-select" >
+                                                        <option >Select Bureau</option>
                                                         {this.state.allBureau.map((bureau) => (
-
-                                                            <option value={bureau.Bureau}>{bureau.subcity}</option>
+                                                            <option value={bureau.bureau}>{bureau.subcity}</option>
                                                         ))}
 
                                                     </select>

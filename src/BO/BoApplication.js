@@ -1,21 +1,30 @@
 import React, { Component } from 'react'
+import SideBar from './SideBar'
+import Header from '../Applicant/Header'
 import axios from 'axios';
-import Sidebar from './Sidebar'
-import Header from './Header'
-class ViewPlanningConsent extends Component {
+import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
+class BoApplication extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            planingConsents: [],
+            applications: [],
             rejected: [],
             accepted: [],
             pend: []
         }
     }
+    HandleClick() {
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfully Approved',
+        });
+    }
     componentDidMount() {
         const tokenString = localStorage.getItem('token');
         axios
-            .get("http://localhost:8000/api/applicant/viewpc",
+            .get("http://localhost:8000/api/buildingofficer/viewApplication",
                 { headers: { authorization: `Bearer ${tokenString}` } })
             .then((response) => {
                 if (response.massage === "unauthenticated") {
@@ -23,20 +32,41 @@ class ViewPlanningConsent extends Component {
                 }
                 console.log(response.data.data);
                 this.setState({
-                    planingConsents: response.data.data,
+                    applications: response.data.data,
                     rejected: response.data.data.filter(data => data.status === 2),
                     accepted: response.data.data.filter(data => data.status === 1),
                     pend: response.data.data.filter(data => data.status === 0),
                 })
+
             })
 
     }
+    acceptPC = async id => {
+        const tokenString = localStorage.getItem('token');
+        await axios
+            .get(`http://localhost:8000/api/buildingOfficer/acceptApp/${id}`,
+                { headers: { authorization: `Bearer ${tokenString}` } });
+        this.HandleClick();
+        window.location.reload();
+    };
+    rejectPc = async id => {
+        const tokenString = localStorage.getItem('token');
+        await axios
+            .get(`http://localhost:8000/api/buildingOfficer/rejectApp/${id}`,
+                { headers: { authorization: `Bearer ${tokenString}` } });
+        Swal.fire({
+            title: 'Success',
+            type: 'success',
+            text: 'successfully Rejected',
+        });
+        window.location.reload();
+    }
     render() {
-        const { planingConsents, rejected, accepted, pend } = this.state;
+        const { applications, rejected, accepted, pend } = this.state;
         return (
             <div>
                 <Header />
-                <Sidebar />
+                <SideBar />
                 <div className="content-wrapper">
                     {/* Content Header (Page header) */}
                     <div className="content-header">
@@ -66,7 +96,7 @@ class ViewPlanningConsent extends Component {
                                         <div className="info-box-content">
                                             <span className="info-box-text">Applications</span>
                                             <span className="info-box-number">
-                                                {planingConsents.length}
+                                                {applications.length}
                                                 <small> Total</small>
                                             </span>
                                         </div>
@@ -119,7 +149,7 @@ class ViewPlanningConsent extends Component {
 
                             <div className="card">
                                 <div className="card-header border-transparent">
-                                    <h3 className="card-title">My Planing Consent</h3>
+                                    <h3 className="card-title">Building Officer assigned applications</h3>
                                     <div className="card-tools">
                                         <button type="button" className="btn btn-tool" data-card-widget="collapse">
                                             <i className="fas fa-minus" />
@@ -135,24 +165,44 @@ class ViewPlanningConsent extends Component {
                                         <table className="table m-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Planing ID</th>
-                                                    <th>Building Officer Name</th>
-                                                    <th>Comment</th>
+                                                    <th>Planning ID</th>
+                                                    <th>Applicant Name</th>
+                                                    <th>Phone number</th>
                                                     <th>Status</th>
-                                                    <th>Start Application</th>
+                                                    <th>Details</th>
+                                                    <th>Add Comment</th>
+                                                    <th>Accept/Reject</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {planingConsents.map((planingConsent, index) =>
+                                                {applications.map((application, index) =>
                                                     <tr>
-                                                        <td key={index}>{planingConsent.id}</td>
-                                                        <td >{planingConsent.buildingOfficer.first_name}</td>
+                                                        <td key={index}>{application.id}</td>
+                                                        <td >{application.applicant.first_name}</td>
+                                                        <td >{application.applicant.phone_number}</td>
+                                                        <td >{(() => {
+                                                            if (application.status === 0) {
+                                                                return <p>Pending</p>
+                                                            } if (application.status === 1) {
+                                                                return <p>Accepted</p>
+                                                            } if (application.status === 2) {
+                                                                return <p>Rejected</p>
+                                                            }
+                                                        })()}</td>
+                                                        <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
+                                                        <td ><Link to={`/bo/applicationComment/${application.id}`}><button type="button" class="btn btn-block btn-outline-primary btn-xs">Comment</button></Link></td>
 
-                                                        <td >{planingConsent.comment}</td>
-                                                        <td >{planingConsent.status === 0 ? "Panding" : "Approved"}</td>
-                                                        {planingConsent.status === 1 ?
-                                                            <td ><a type="button" href="/applicant/application" className="btn btn-primary">start</a></td> : <td><button disabled className="btn btn-primary">start</button></td>
-                                                        }
+                                                        {(() => {
+                                                            if (application.status === 0) {
+                                                                return <td ><button onClick={this.acceptPC.bind(this, application.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>
+                                                            } else if (application.status === 1) {
+                                                                return <td><button onClick={this.rejectPc.bind(this, application.id)} class="btn btn-block btn-outline-danger btn-xs">Reject</button></td>
+                                                            } else if (application.status === 2) {
+                                                                return <td><button onClick={this.acceptPC.bind(this, application.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>
+                                                            }
+                                                        })()}
+
+
                                                     </tr>
                                                 )}
                                             </tbody>
@@ -162,8 +212,8 @@ class ViewPlanningConsent extends Component {
                                 </div>
                                 {/* /.card-body */}
                                 <div className="card-footer clearfix">
-                                    <a href="#footer1" className="btn btn-sm btn-info float-left">Place New Order</a>
-                                    <a href="#footer" className="btn btn-sm btn-secondary float-right">View All Orders</a>
+                                    <a href="#floating" className="btn btn-sm btn-info float-left">Place New Order</a>
+                                    <a href="#floating1" className="btn btn-sm btn-secondary float-right">View All Orders</a>
                                 </div>
                                 {/* /.card-footer */}
                             </div>
@@ -180,4 +230,4 @@ class ViewPlanningConsent extends Component {
         )
     }
 }
-export default ViewPlanningConsent;
+export default BoApplication;

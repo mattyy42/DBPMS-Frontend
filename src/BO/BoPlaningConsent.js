@@ -3,6 +3,7 @@ import SideBar from './SideBar'
 import Header from '../Applicant/Header'
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
 class BoPlaningConsent extends Component {
     constructor(props) {
         super(props);
@@ -148,7 +149,7 @@ class BoPlaningConsent extends Component {
 
                             <div className="card">
                                 <div className="card-header border-transparent">
-                                    <h3 className="card-title">My Applications</h3>
+                                    <h3 className="card-title">Building Officer assigned planing consent</h3>
                                     <div className="card-tools">
                                         <button type="button" className="btn btn-tool" data-card-widget="collapse">
                                             <i className="fas fa-minus" />
@@ -166,9 +167,10 @@ class BoPlaningConsent extends Component {
                                                 <tr>
                                                     <th>Planning ID</th>
                                                     <th>Applicant Name</th>
-                                                    <th>Bureau</th>
+                                                    <th>Phone number</th>
                                                     <th>Status</th>
                                                     <th>Details</th>
+                                                    <th>Add Comment</th>
                                                     <th>Accept/Reject</th>
                                                 </tr>
                                             </thead>
@@ -177,7 +179,7 @@ class BoPlaningConsent extends Component {
                                                     <tr>
                                                         <td key={index}>{planingConsent.id}</td>
                                                         <td >{planingConsent.applicant.first_name}</td>
-                                                        <td >{planingConsent.bureau}</td>
+                                                        <td >{planingConsent.phone_number}</td>
                                                         <td >{(() => {
                                                             if (planingConsent.status === 0) {
                                                                 return <p>Pending</p>
@@ -188,10 +190,8 @@ class BoPlaningConsent extends Component {
                                                             }
                                                         })()}</td>
                                                         <td ><button type="button" class="btn btn-block btn-outline-primary btn-xs">Details</button></td>
-                                                        {/* {planingConsent.status === 0 ?
-                                                        <td ><button onClick={this.acceptPC.bind(this,planingConsent.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>:
-                                                        <td ><button onClick={this.rejectPc.bind(this,planingConsent.id)} class="btn btn-block btn-outline-danger btn-xs">Reject</button></td>
-                                                        } */}
+                                                        <td ><Link to={`/bo/addComment/${planingConsent.id}`}><button type="button" class="btn btn-block btn-outline-primary btn-xs">Comment</button></Link></td>
+
                                                         {(() => {
                                                             if (planingConsent.status === 0) {
                                                                 return <td ><button onClick={this.acceptPC.bind(this, planingConsent.id)} class="btn btn-block btn-outline-warning btn-xs">Accept</button></td>

@@ -34,9 +34,9 @@ export default class Applicationform extends Component {
         consultingFirmAddress: "",
         revitFile:"",
       },
-
-
     };
+    this.onChange = this.onChange.bind(this);
+    this.createImage=this.createImage.bind(this);
   }
   HandleClick() {
     Swal.fire({
@@ -81,7 +81,15 @@ export default class Applicationform extends Component {
     applicationForm[e.target.name] = e.target.value;
     this.setState({ applicationForm });
   };
-
+  onChange(e) {
+    this.setState({
+      applicationForm: {
+        ...this.state.applicationForm,
+        'revitFile':e.target.files[0],
+      }
+    });
+  }
+  
   onSubmitHandler = (e) => {
     e.preventDefault();
     this.setState({ isLoading: true });
@@ -91,9 +99,8 @@ export default class Applicationform extends Component {
       .post("http://localhost:8000/api/applicant/submitApplication", this.state.applicationForm,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
             'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,           
           }
         })
       .then((response) => {
@@ -145,15 +152,15 @@ export default class Applicationform extends Component {
       }).catch((err) => {
         console.log(err.response);
         //handle error
-        if (
-          err.response.status === 401) {
-          this.setState({
-            // errMsg: errresponse.data.error,
-            isLoading: false,
-            isShowError: true,
-          });
+        // if (
+        //   err.response.status === 401) {
+        //   this.setState({
+        //     // errMsg: errresponse.data.error,
+        //     isLoading: false,
+        //     isShowError: true,
+        //   });
 
-        }
+        //}
       });
   };
 
@@ -212,11 +219,7 @@ export default class Applicationform extends Component {
 
                     <div className="card-body">
 
-                      {/* <div className="form-group">
-  
-                     <input type="hidden" name="city" id="city"  value="AABPB" onChange={this.onChangehandler}/>
                       
-                      </div> */}
                       <div className="form-group">
 
                         <label htmlFor="city">City</label>
@@ -309,7 +312,7 @@ export default class Applicationform extends Component {
                      
                       <div className="form-group">
                         <label htmlFor="revitFile">Upload Revit file</label>
-                        <input type="file" className="form-control" id="revitFile" name="revitFile"  value={this.state.applicationForm.revitFile} onChange={this.onChangehandler} required />
+                        <input type="file" className="form-control" id="revitFile" name="revitFile"  value={undefined} onChange={this.onChange} required />
                       </div>
                     </div>
                     {/* /.card-body */}

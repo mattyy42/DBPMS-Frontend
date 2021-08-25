@@ -32,7 +32,6 @@ class SideBar extends Component {
 
                     first_name: response.data.first_name,
                     last_name: response.data.last_name,
-                    // building_officer: response.data.buildingOfficer,
                 })
 
             })

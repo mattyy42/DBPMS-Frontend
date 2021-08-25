@@ -191,7 +191,7 @@ class ProfileBOA extends Component {
                                                             <i className="fas fa-camera bg-purple" />
                                                             <div className="timeline-item">
                                                                 <span className="time"><i className="far fa-clock" /> 2 days ago</span>
-                                                                <h3 className="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+                                                                {/* <h3 className="timeline-header"><a href="javascript:;">Mina Lee</a> uploaded new photos</h3> */}
                                                                 <div className="timeline-body">
                                                                     <img src="https://placehold.it/150x100" alt="..." />
                                                                     <img src="https://placehold.it/150x100" alt="..." />
@@ -243,7 +243,7 @@ class ProfileBOA extends Component {
                                                             <div className="offset-sm-2 col-sm-10">
                                                                 <div className="checkbox">
                                                                     <label>
-                                                                        <input type="checkbox" /> I agree to the <a href="#">terms and conditions</a>
+                                                                        <input type="checkbox" /> I agree to the <a href="#term">terms and conditions</a>
                                                                     </label>
                                                                 </div>
                                                             </div>
