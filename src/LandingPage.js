@@ -8,7 +8,7 @@ class LandingPage extends Component {
     render() {
        // const { identifier,Post} = this.state;
         return (
-            <div>
+            <div className="main-layout">
                 <div className="loader_bg">
                     <div className="loader"><img src="images/loading.gif" alt="#" /></div>
                 </div>
@@ -75,7 +75,7 @@ class LandingPage extends Component {
                             </div>
                             <div className="col-md-7">
                                 <div className="text-img">
-                                    <figure><img src="style.images/img.png" /></figure>
+                                    <figure><img src="images/img.png" /></figure>
                                 </div>
                             </div>
                         </div>
